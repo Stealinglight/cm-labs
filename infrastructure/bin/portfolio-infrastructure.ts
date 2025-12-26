@@ -21,7 +21,7 @@ if (!appName || !githubOwner || !githubRepository) {
 }
 
 // Create the stack
-new PortfolioStack(app, 'PortfolioInfrastructureStack', {
+const stack = new PortfolioStack(app, 'PortfolioInfrastructureStack', {
   appName,
   githubOwner,
   githubRepository,
@@ -32,4 +32,10 @@ new PortfolioStack(app, 'PortfolioInfrastructureStack', {
     region: process.env.CDK_DEFAULT_REGION,
   },
   description: 'Infrastructure for portfolio website deployment via AWS Amplify',
+  tags: {
+    Project: 'Portfolio',
+    Environment: 'Production',
+    ManagedBy: 'CDK',
+    Repository: `${githubOwner}/${githubRepository}`,
+  },
 });

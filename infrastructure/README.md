@@ -115,8 +115,25 @@ The Amplify build is configured for Vite:
 
 - **Build command**: `npm run build`
 - **Build output**: `build/` directory
-- **Node version**: 20.x
+- **Node version**: 20.x (via `_LIVE_UPDATES` environment variable)
 - **Cache**: `node_modules/`
+
+### Node.js Version Management
+
+The stack uses the `_LIVE_UPDATES` environment variable to ensure Amplify builds use Node.js 20.x:
+
+```json
+{
+  "_LIVE_UPDATES": "[{\"pkg\":\"node\",\"type\":\"nvm\",\"version\":\"20\"}]"
+}
+```
+
+This environment variable:
+- Tells Amplify to use `nvm` (Node Version Manager) to switch to Node 20
+- Ensures consistent builds regardless of Amplify's default Node version
+- Applies to all branches and PR previews automatically
+
+If you need to change the Node version, update the `version` field in `lib/portfolio-stack.ts`.
 
 ## Troubleshooting
 

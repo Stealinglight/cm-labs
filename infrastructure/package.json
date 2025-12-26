@@ -1,0 +1,26 @@
+{
+  "name": "portfolio-infrastructure",
+  "version": "1.0.0",
+  "description": "AWS CDK infrastructure for portfolio website deployment via Amplify",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "cdk": "cdk",
+    "deploy": "cdk deploy",
+    "diff": "cdk diff",
+    "synth": "cdk synth",
+    "destroy": "cdk destroy"
+  },
+  "devDependencies": {
+    "@types/node": "20.14.9",
+    "aws-cdk": "2.149.0",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.5.3"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-amplify-alpha": "^2.149.0-alpha.0",
+    "aws-cdk-lib": "2.149.0",
+    "constructs": "^10.0.0",
+    "source-map-support": "^0.5.21"
+  }
+}

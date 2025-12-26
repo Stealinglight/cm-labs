@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
-import * as cdk from 'aws-cdk-lib';
+import { App } from 'aws-cdk-lib';
 import { PortfolioStack } from '../lib/portfolio-stack';
 
-const app = new cdk.App();
+const app = new App();
 
 // Get configuration from context
 const appName = app.node.tryGetContext('appName');

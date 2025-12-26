@@ -93,6 +93,34 @@ npm run test              # Run tests in watch mode
 npm run test -- --run     # Run tests once
 ```
 
+## 🚀 Deployment
+
+The project includes AWS CDK infrastructure for automated deployment via AWS Amplify Hosting.
+
+### Prerequisites
+
+- AWS CLI configured with credentials
+- AWS CDK CLI: `npm install -g aws-cdk`
+- GitHub personal access token stored in AWS Secrets Manager as `portfolio-github-token`
+
+### Quick Start
+
+```bash
+cd infrastructure
+npm install
+npm run deploy
+```
+
+For detailed deployment instructions, configuration options, and troubleshooting, see [infrastructure/README.md](infrastructure/README.md).
+
+### Features
+
+- ✅ Automatic deployments on push to main
+- ✅ PR preview environments
+- ✅ Custom domain support (optional)
+- ✅ SSL certificates automatically provisioned
+- ✅ Single-page application routing
+
 ## 🤝 Contributing
 
 This is a personal portfolio project, but suggestions and feedback are welcome! Feel free to open an issue or submit a pull request.

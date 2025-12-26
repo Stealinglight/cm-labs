@@ -24,3 +24,9 @@ npm-debug.log*
 
 # Testing
 coverage/
+
+# Infrastructure CDK artifacts
+infrastructure/*.js
+infrastructure/*.d.ts
+infrastructure/.cdk.staging
+infrastructure/cdk.out

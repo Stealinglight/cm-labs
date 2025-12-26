@@ -1,10 +1,10 @@
-import * as cdk from 'aws-cdk-lib';
+import { CfnOutput, Stack, StackProps } from 'aws-cdk-lib';
 import * as amplify from '@aws-cdk/aws-amplify-alpha';
-import * as secretsmanager from 'aws-cdk-lib/aws-secretsmanager';
-import * as codebuild from 'aws-cdk-lib/aws-codebuild';
+import { ISecret, Secret } from 'aws-cdk-lib/aws-secretsmanager';
+import { BuildSpec } from 'aws-cdk-lib/aws-codebuild';
 import { Construct } from 'constructs';
 
-export interface PortfolioStackProps extends cdk.StackProps {
+export interface PortfolioStackProps extends StackProps {
   readonly appName: string;
   readonly githubOwner: string;
   readonly githubRepository: string;
@@ -12,7 +12,7 @@ export interface PortfolioStackProps extends cdk.StackProps {
   readonly customDomain?: string;
 }
 
-export class PortfolioStack extends cdk.Stack {
+export class PortfolioStack extends Stack {
   private readonly appName: string;
   private readonly githubOwner: string;
   private readonly githubRepository: string;
@@ -29,7 +29,7 @@ export class PortfolioStack extends cdk.Stack {
     this.customDomain = props.customDomain;
 
     // Retrieve GitHub token from Secrets Manager
-    const githubToken = secretsmanager.Secret.fromSecretNameV2(
+    const githubToken = Secret.fromSecretNameV2(
       this,
       'GitHubToken',
       'portfolio-github-token'
@@ -47,25 +47,25 @@ export class PortfolioStack extends cdk.Stack {
     }
 
     // CloudFormation outputs
-    new cdk.CfnOutput(this, 'AmplifyAppId', {
+    new CfnOutput(this, 'AmplifyAppId', {
       value: amplifyApp.appId,
       description: 'Amplify App ID',
       exportName: `${this.stackName}-AmplifyAppId`,
     });
 
-    new cdk.CfnOutput(this, 'AmplifyDefaultDomain', {
+    new CfnOutput(this, 'AmplifyDefaultDomain', {
       value: `https://${this.branchName}.${amplifyApp.defaultDomain}`,
       description: 'Amplify default domain URL',
       exportName: `${this.stackName}-DefaultDomain`,
     });
 
-    new cdk.CfnOutput(this, 'AmplifyConsoleUrl', {
+    new CfnOutput(this, 'AmplifyConsoleUrl', {
       value: `https://console.aws.amazon.com/amplify/home?region=${this.region}#/${amplifyApp.appId}`,
       description: 'Amplify Console URL',
     });
   }
 
-  private createAmplifyApp(githubToken: secretsmanager.ISecret): amplify.App {
+  private createAmplifyApp(githubToken: ISecret): amplify.App {
     return new amplify.App(this, 'PortfolioApp', {
       appName: this.appName,
       sourceCodeProvider: new amplify.GitHubSourceCodeProvider({
@@ -87,8 +87,8 @@ export class PortfolioStack extends cdk.Stack {
     });
   }
 
-  private getBuildSpec(): codebuild.BuildSpec {
-    return codebuild.BuildSpec.fromObjectToYaml({
+  private getBuildSpec(): BuildSpec {
+    return BuildSpec.fromObjectToYaml({
       version: 1,
       frontend: {
         phases: {
@@ -139,7 +139,7 @@ export class PortfolioStack extends cdk.Stack {
 
     domain.mapRoot(mainBranch);
 
-    new cdk.CfnOutput(this, 'CustomDomainUrl', {
+    new CfnOutput(this, 'CustomDomainUrl', {
       value: `https://${this.customDomain}`,
       description: 'Custom domain URL',
       exportName: `${this.stackName}-CustomDomain`,

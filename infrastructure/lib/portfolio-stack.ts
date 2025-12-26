@@ -48,6 +48,13 @@ export class PortfolioStack extends Stack {
     // Create Amplify App
     const amplifyApp = this.createAmplifyApp(githubToken);
 
+    // Configure SPA routing - rewrite all requests to index.html for client-side routing
+    amplifyApp.addCustomRule({
+      source: '/<*>',
+      target: '/index.html',
+      status: amplify.RedirectStatus.NOT_FOUND_REWRITE,
+    });
+
     // Configure main branch
     const mainBranch = this.configureMainBranch(amplifyApp);
 
@@ -140,19 +147,10 @@ export class PortfolioStack extends Stack {
   }
 
   private configureMainBranch(app: amplify.App): amplify.Branch {
-    const branch = app.addBranch(this.branchName, {
+    return app.addBranch(this.branchName, {
       autoBuild: true,
       stage: 'PRODUCTION',
     });
-
-    // Enable PR previews
-    app.addCustomRule({
-      source: '/<*>',
-      target: '/index.html',
-      status: amplify.RedirectStatus.NOT_FOUND_REWRITE,
-    });
-
-    return branch;
   }
 
   private configureCustomDomain(app: amplify.App, mainBranch: amplify.Branch): void {

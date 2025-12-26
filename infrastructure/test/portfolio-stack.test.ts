@@ -73,14 +73,20 @@ describe('PortfolioStack', () => {
       const template = Template.fromStack(stack);
 
       // Verify build spec is a string containing correct commands
-      const resources = template.toJSON().Resources;
+      interface CFResource {
+        Type: string;
+        Properties?: Record<string, unknown>;
+      }
+      
+      const resources = template.toJSON().Resources as Record<string, CFResource>;
       const amplifyApp = Object.values(resources).find(
-        (r: any) => r.Type === 'AWS::Amplify::App'
-      ) as any;
+        (r) => r.Type === 'AWS::Amplify::App'
+      );
 
-      expect(amplifyApp.Properties.BuildSpec).toContain('npm ci');
-      expect(amplifyApp.Properties.BuildSpec).toContain('npm run build');
-      expect(amplifyApp.Properties.BuildSpec).toContain('baseDirectory: build');
+      expect(amplifyApp).toBeDefined();
+      expect(amplifyApp?.Properties?.BuildSpec).toContain('npm ci');
+      expect(amplifyApp?.Properties?.BuildSpec).toContain('npm run build');
+      expect(amplifyApp?.Properties?.BuildSpec).toContain('baseDirectory: build');
     });
 
     it('sets Node 20 environment variable', () => {
@@ -92,14 +98,22 @@ describe('PortfolioStack', () => {
 
       const template = Template.fromStack(stack);
 
-      const resources = template.toJSON().Resources;
-      const amplifyApp = Object.values(resources).find(
-        (r: any) => r.Type === 'AWS::Amplify::App'
-      ) as any;
+      interface CFResource {
+        Type: string;
+        Properties?: {
+          EnvironmentVariables?: Array<{ Name: string; Value: string }>;
+        };
+      }
 
-      const envVar = amplifyApp.Properties.EnvironmentVariables[0];
-      expect(envVar.Name).toBe('_LIVE_UPDATES');
-      expect(envVar.Value).toContain('"version":"20"');
+      const resources = template.toJSON().Resources as Record<string, CFResource>;
+      const amplifyApp = Object.values(resources).find(
+        (r) => r.Type === 'AWS::Amplify::App'
+      );
+
+      expect(amplifyApp).toBeDefined();
+      const envVar = amplifyApp?.Properties?.EnvironmentVariables?.[0];
+      expect(envVar?.Name).toBe('_LIVE_UPDATES');
+      expect(envVar?.Value).toContain('"version":"20"');
     });
   });
 
@@ -180,12 +194,20 @@ describe('PortfolioStack', () => {
 
       const template = Template.fromStack(stack);
 
-      const resources = template.toJSON().Resources;
-      const amplifyApp = Object.values(resources).find(
-        (r: any) => r.Type === 'AWS::Amplify::App'
-      ) as any;
+      interface CFResource {
+        Type: string;
+        Properties?: {
+          OauthToken?: Record<string, unknown>;
+        };
+      }
 
-      const tokenRef = JSON.stringify(amplifyApp.Properties.OauthToken);
+      const resources = template.toJSON().Resources as Record<string, CFResource>;
+      const amplifyApp = Object.values(resources).find(
+        (r) => r.Type === 'AWS::Amplify::App'
+      );
+
+      expect(amplifyApp).toBeDefined();
+      const tokenRef = JSON.stringify(amplifyApp?.Properties?.OauthToken);
       expect(tokenRef).toContain('portfolio-github-token');
       expect(tokenRef).toContain('secretsmanager');
     });

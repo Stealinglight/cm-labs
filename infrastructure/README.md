@@ -212,8 +212,35 @@ infrastructure/
 └── README.md                         # This file
 ```
 
+## Alpha Package Usage
+
+This infrastructure uses `@aws-cdk/aws-amplify-alpha`, which is an **experimental** AWS CDK construct library.
+
+### What This Means
+
+**Alpha Status**: This package is under active development and its API may change in future releases. However, it provides a high-level interface for AWS Amplify that is more convenient than using L1 (CloudFormation) constructs directly.
+
+**Stability**: While the API may evolve, the underlying AWS Amplify service is production-ready and stable. The alpha designation refers only to the CDK construct wrapper, not the service itself.
+
+**Breaking Changes**: Minor version updates may include breaking changes. Pin the version in `package.json` and test thoroughly before upgrading.
+
+### Alternatives
+
+If you prefer stable APIs, you can:
+1. **Use L1 (Cfn) Constructs**: Use `CfnApp` and `CfnBranch` from `aws-cdk-lib/aws-amplify` - these are stable but more verbose
+2. **Wait for GA**: The Amplify L2 constructs will eventually graduate to stable status in `aws-cdk-lib`
+
+### Migration Path
+
+When the Amplify constructs graduate from alpha to stable:
+1. Update imports from `@aws-cdk/aws-amplify-alpha` to `aws-cdk-lib/aws-amplify`
+2. Remove `@aws-cdk/aws-amplify-alpha` from dependencies
+3. Review changelog for any API changes
+4. Run tests to verify compatibility
+
 ## Additional Resources
 
 - [AWS CDK Documentation](https://docs.aws.amazon.com/cdk/)
 - [AWS Amplify Hosting Documentation](https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html)
 - [CDK Amplify Alpha Constructs](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-amplify-alpha-readme.html)
+- [AWS CDK Alpha Modules](https://github.com/aws/aws-cdk/blob/main/ALPHA_MODULES.md)

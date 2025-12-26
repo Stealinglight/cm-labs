@@ -12,6 +12,14 @@ const githubRepository = app.node.tryGetContext('githubRepository');
 const branchName = app.node.tryGetContext('branchName');
 const customDomain = app.node.tryGetContext('customDomain');
 
+// Validate required context values
+if (!appName || !githubOwner || !githubRepository) {
+  throw new Error(
+    'Required context values missing: appName, githubOwner, githubRepository. ' +
+    'Please ensure these are defined in cdk.json or passed via -c flags.'
+  );
+}
+
 // Create the stack
 new PortfolioStack(app, 'PortfolioInfrastructureStack', {
   appName,

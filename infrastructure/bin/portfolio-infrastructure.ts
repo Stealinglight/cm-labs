@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
-import { App } from 'aws-cdk-lib';
+import { App, Aspects } from 'aws-cdk-lib';
+import { AwsSolutionsChecks } from 'cdk-nag';
 import { PortfolioStack } from '../lib/portfolio-stack';
+import { TagComplianceAspect } from '../lib/aspects/tag-compliance-aspect';
 
 const app = new App();
 
@@ -39,3 +41,10 @@ new PortfolioStack(app, 'PortfolioInfrastructureStack', {
     Repository: `${githubOwner}/${githubRepository}`,
   },
 });
+
+// Apply CDK Aspects for governance and compliance
+Aspects.of(app).add(new TagComplianceAspect(['Project', 'Environment', 'ManagedBy', 'Repository']));
+
+// Apply cdk-nag for security and compliance checks
+// This runs AWS Solutions best practice checks on the infrastructure
+Aspects.of(app).add(new AwsSolutionsChecks({ verbose: true }));

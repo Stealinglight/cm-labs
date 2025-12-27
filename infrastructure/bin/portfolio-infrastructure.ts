@@ -21,7 +21,7 @@ if (!appName || !githubOwner || !githubRepository) {
 }
 
 // Create the stack
-const stack = new PortfolioStack(app, 'PortfolioInfrastructureStack', {
+new PortfolioStack(app, 'PortfolioInfrastructureStack', {
   appName,
   githubOwner,
   githubRepository,

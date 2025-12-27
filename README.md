@@ -1,5 +1,9 @@
 # Technical Portfolio Website
 
+<!-- TODO: After deployment, replace with actual Amplify badge:
+[![Amplify Status](https://img.shields.io/badge/Amplify-Build%20Status-orange?logo=aws-amplify)](https://console.aws.amazon.com/amplify/)
+-->
+
 A modern, responsive portfolio website showcasing technical expertise in AI Security Engineering, multi-agent systems, and security automation. Built with React, TypeScript, and modern web technologies.
 
 ## ✨ Features

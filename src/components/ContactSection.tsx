@@ -65,12 +65,12 @@ export function ContactSection() {
                 <h3 className="text-sm uppercase tracking-widest text-[#00d9ff]">LinkedIn</h3>
               </div>
               <a
-                href="https://linkedin.com/in/chrismcmillon"
+                href="https://www.linkedin.com/in/cmcmillon"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-[#00ff41] transition-colors font-mono"
               >
-                linkedin.com/in/chrismcmillon
+                linkedin.com/in/cmcmillon
               </a>
             </div>
 

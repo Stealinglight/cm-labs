@@ -1,8 +1,8 @@
 interface Node {
   id: string;
   label: string;
-  x: number;
-  y: number;
+  x: number; // Percentage-based X coordinate (0-100) within SVG viewBox
+  y: number; // Percentage-based Y coordinate (0-100) within SVG viewBox
   color: string;
 }
 
@@ -18,6 +18,7 @@ interface ArchitectureDiagramProps {
 }
 
 export function ArchitectureDiagram({ title, nodes, connections }: ArchitectureDiagramProps) {
+  // SVG canvas dimensions: 600x350px viewBox, scales responsively
   const width = 600;
   const height = 350;
 
@@ -35,6 +36,7 @@ export function ArchitectureDiagram({ title, nodes, connections }: ArchitectureD
           const toNode = nodes.find((n) => n.id === conn.to);
           if (!fromNode || !toNode) return null;
 
+          // Convert percentage coordinates (0-100) to absolute SVG positions
           const x1 = (fromNode.x / 100) * width;
           const y1 = (fromNode.y / 100) * height;
           const x2 = (toNode.x / 100) * width;
@@ -65,11 +67,12 @@ export function ArchitectureDiagram({ title, nodes, connections }: ArchitectureD
 
         {/* Draw nodes */}
         {nodes.map((node, idx) => {
+          // Convert percentage coordinates (0-100) to absolute SVG positions
           const x = (node.x / 100) * width;
           const y = (node.y / 100) * height;
           const lines = node.label.split('\n');
-          const boxWidth = 120;
-          const boxHeight = 60;
+          const boxWidth = 120;  // Node box width in pixels
+          const boxHeight = 60;  // Node box height in pixels
 
           return (
             <g key={idx}>

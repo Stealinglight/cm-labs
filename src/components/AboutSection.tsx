@@ -52,7 +52,7 @@ export function AboutSection() {
               <h3 className="text-sm uppercase tracking-widest text-[#00d9ff] mb-3">Current Role</h3>
               <p className="mb-1">AI Security Engineer</p>
               <p className="text-gray-400 mb-2">AWS Security - Operational Research & Development</p>
-              <p className="text-sm text-gray-500 font-mono">May 2022 - Present (~4 years)</p>
+              <p className="text-sm text-gray-500 font-mono">May 2022 - Present (~3-4 years)</p>
             </div>
 
             {/* Location */}

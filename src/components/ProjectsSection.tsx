@@ -36,9 +36,11 @@ export function ProjectsSection() {
               </div>
 
               <p className="text-gray-400 leading-relaxed mb-6">
-                AI-powered multi-agent system for DoD compliance automation. Automatically detects, analyzes,
-                and remediates NIST 800-171/CMMC violations with confidence-based decision routing.
-                Features a 5-agent pipeline with Wazuh SIEM integration and immutable audit trails.
+                AI-powered multi-agent system for DoD compliance automation. A 5-agent pipeline (Detection →
+                Analysis → Decision → Remediation/Escalation → Documentation) that automatically processes
+                NIST 800-171/CMMC violations from Wazuh SIEM. Uses confidence-based routing: high-confidence
+                violations get auto-remediated, uncertain cases escalate to human review. All actions logged
+                to immutable S3 audit trails.
               </p>
 
               <div className="flex flex-wrap gap-2 mb-8">

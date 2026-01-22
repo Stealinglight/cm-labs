@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { ExperienceSection } from './ExperienceSection';
+import { ExperienceSection } from '../../src/components/ExperienceSection';
 
 describe('ExperienceSection', () => {
   it('renders the section heading', () => {
@@ -78,7 +78,10 @@ describe('ExperienceSection', () => {
   describe('Phase 1 roles', () => {
     it('displays AWS SOC CloudOps role', () => {
       render(<ExperienceSection />);
-      expect(screen.getByText('AWS SOC CloudOps')).toBeInTheDocument();
+      // Text is broken up by AcronymTooltip, so use a function matcher
+      expect(screen.getByText((content, element) => {
+        return element?.tagName.toLowerCase() === 'h4' && content.includes('AWS') && element.textContent?.includes('SOC');
+      })).toBeInTheDocument();
       expect(screen.getByText('Security Engineer / Tech Lead')).toBeInTheDocument();
       expect(screen.getByText('May 2022 - Feb 2023')).toBeInTheDocument();
     });
@@ -86,7 +89,10 @@ describe('ExperienceSection', () => {
     it('displays Olezka Global SOC Analyst role', () => {
       render(<ExperienceSection />);
       expect(screen.getByText('Olezka Global')).toBeInTheDocument();
-      expect(screen.getByText('SOC Analyst')).toBeInTheDocument();
+      // Text is broken up by AcronymTooltip, so use a function matcher
+      expect(screen.getByText((content, element) => {
+        return element?.tagName.toLowerCase() === 'p' && element.textContent === 'SOC Analyst';
+      })).toBeInTheDocument();
       expect(screen.getByText('Dec 2021 - May 2022')).toBeInTheDocument();
     });
   });

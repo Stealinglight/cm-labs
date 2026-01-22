@@ -1,0 +1,297 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ArchitectureDiagram > Snapshot tests > matches snapshot for ACRS-style diagram 1`] = `
+<div>
+  <div
+    class="w-full"
+  >
+    <div
+      class="text-xs font-mono text-[#00ff41] mb-4"
+    >
+      // 
+      ACRS 5-Agent Pipeline
+    </div>
+    <svg
+      class="w-full h-auto"
+      style="max-height: 350px;"
+      viewBox="0 0 600 350"
+    >
+      <g>
+        <line
+          opacity="0.3"
+          stroke="#00d9ff"
+          stroke-dasharray="5,5"
+          stroke-width="2"
+          x1="60"
+          x2="180"
+          y1="175"
+          y2="175"
+        />
+        <polygon
+          fill="#00ff41"
+          opacity="0.5"
+          points="180,175 174,171 174,179"
+          transform="rotate(0, 180, 175)"
+        />
+      </g>
+      <g>
+        <line
+          opacity="0.3"
+          stroke="#00ff41"
+          stroke-dasharray="5,5"
+          stroke-width="2"
+          x1="180"
+          x2="300"
+          y1="175"
+          y2="175"
+        />
+        <polygon
+          fill="#00ff41"
+          opacity="0.5"
+          points="300,175 294,171 294,179"
+          transform="rotate(0, 300, 175)"
+        />
+      </g>
+      <g>
+        <line
+          opacity="0.3"
+          stroke="#00ff41"
+          stroke-dasharray="5,5"
+          stroke-width="2"
+          x1="300"
+          x2="420"
+          y1="175"
+          y2="175"
+        />
+        <polygon
+          fill="#00ff41"
+          opacity="0.5"
+          points="420,175 414,171 414,179"
+          transform="rotate(0, 420, 175)"
+        />
+      </g>
+      <g>
+        <rect
+          fill="rgba(26, 26, 26, 0.9)"
+          height="60"
+          rx="4"
+          stroke="#00d9ff"
+          stroke-width="2"
+          width="120"
+          x="0"
+          y="145"
+        />
+        <text
+          dominant-baseline="middle"
+          fill="#00d9ff"
+          font-family="monospace"
+          font-size="12"
+          text-anchor="middle"
+          x="60"
+          y="168"
+        >
+          Wazuh
+        </text>
+        <text
+          dominant-baseline="middle"
+          fill="#00d9ff"
+          font-family="monospace"
+          font-size="12"
+          text-anchor="middle"
+          x="60"
+          y="182"
+        >
+          SIEM
+        </text>
+      </g>
+      <g>
+        <rect
+          fill="rgba(26, 26, 26, 0.9)"
+          height="60"
+          rx="4"
+          stroke="#00ff41"
+          stroke-width="2"
+          width="120"
+          x="120"
+          y="145"
+        />
+        <text
+          dominant-baseline="middle"
+          fill="#00ff41"
+          font-family="monospace"
+          font-size="12"
+          text-anchor="middle"
+          x="180"
+          y="168"
+        >
+          Detection
+        </text>
+        <text
+          dominant-baseline="middle"
+          fill="#00ff41"
+          font-family="monospace"
+          font-size="12"
+          text-anchor="middle"
+          x="180"
+          y="182"
+        >
+          Agent
+        </text>
+      </g>
+      <g>
+        <rect
+          fill="rgba(26, 26, 26, 0.9)"
+          height="60"
+          rx="4"
+          stroke="#00ff41"
+          stroke-width="2"
+          width="120"
+          x="240"
+          y="145"
+        />
+        <text
+          dominant-baseline="middle"
+          fill="#00ff41"
+          font-family="monospace"
+          font-size="12"
+          text-anchor="middle"
+          x="300"
+          y="168"
+        >
+          Analysis
+        </text>
+        <text
+          dominant-baseline="middle"
+          fill="#00ff41"
+          font-family="monospace"
+          font-size="12"
+          text-anchor="middle"
+          x="300"
+          y="182"
+        >
+          Agent
+        </text>
+      </g>
+      <g>
+        <rect
+          fill="rgba(26, 26, 26, 0.9)"
+          height="60"
+          rx="4"
+          stroke="#00ff41"
+          stroke-width="2"
+          width="120"
+          x="360"
+          y="145"
+        />
+        <text
+          dominant-baseline="middle"
+          fill="#00ff41"
+          font-family="monospace"
+          font-size="12"
+          text-anchor="middle"
+          x="420"
+          y="168"
+        >
+          Decision
+        </text>
+        <text
+          dominant-baseline="middle"
+          fill="#00ff41"
+          font-family="monospace"
+          font-size="12"
+          text-anchor="middle"
+          x="420"
+          y="182"
+        >
+          Agent
+        </text>
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`ArchitectureDiagram > Snapshot tests > matches snapshot for simple two-node diagram 1`] = `
+<div>
+  <div
+    class="w-full"
+  >
+    <div
+      class="text-xs font-mono text-[#00ff41] mb-4"
+    >
+      // 
+      Simple Pipeline
+    </div>
+    <svg
+      class="w-full h-auto"
+      style="max-height: 350px;"
+      viewBox="0 0 600 350"
+    >
+      <g>
+        <line
+          opacity="0.3"
+          stroke="#00ff41"
+          stroke-dasharray="5,5"
+          stroke-width="2"
+          x1="120"
+          x2="480"
+          y1="175"
+          y2="175"
+        />
+        <polygon
+          fill="#00d9ff"
+          opacity="0.5"
+          points="480,175 474,171 474,179"
+          transform="rotate(0, 480, 175)"
+        />
+      </g>
+      <g>
+        <rect
+          fill="rgba(26, 26, 26, 0.9)"
+          height="60"
+          rx="4"
+          stroke="#00ff41"
+          stroke-width="2"
+          width="120"
+          x="60"
+          y="145"
+        />
+        <text
+          dominant-baseline="middle"
+          fill="#00ff41"
+          font-family="monospace"
+          font-size="12"
+          text-anchor="middle"
+          x="120"
+          y="175"
+        >
+          Node 1
+        </text>
+      </g>
+      <g>
+        <rect
+          fill="rgba(26, 26, 26, 0.9)"
+          height="60"
+          rx="4"
+          stroke="#00d9ff"
+          stroke-width="2"
+          width="120"
+          x="420"
+          y="145"
+        />
+        <text
+          dominant-baseline="middle"
+          fill="#00d9ff"
+          font-family="monospace"
+          font-size="12"
+          text-anchor="middle"
+          x="480"
+          y="175"
+        >
+          Node 2
+        </text>
+      </g>
+    </svg>
+  </div>
+</div>
+`;

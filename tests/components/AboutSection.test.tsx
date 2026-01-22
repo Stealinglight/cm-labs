@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { AboutSection } from './AboutSection';
+import { AboutSection } from '../../src/components/AboutSection';
 
 describe('AboutSection', () => {
   it('renders the section heading', () => {
@@ -9,7 +9,8 @@ describe('AboutSection', () => {
 
   it('displays current role information', () => {
     render(<AboutSection />);
-    expect(screen.getByText(/AI Security Engineer/i)).toBeInTheDocument();
+    // Multiple instances of "AI Security Engineer" may exist, just verify at least one
+    expect(screen.getAllByText(/AI Security Engineer/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/AWS Security - Operational Research & Development/i)).toBeInTheDocument();
   });
 

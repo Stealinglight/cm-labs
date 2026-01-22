@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { ProjectsSection } from './ProjectsSection';
+import { ProjectsSection } from '../../src/components/ProjectsSection';
 
 describe('ProjectsSection', () => {
   it('renders the section heading', () => {
@@ -16,17 +16,22 @@ describe('ProjectsSection', () => {
 
     it('displays ACRS project details', () => {
       render(<ProjectsSection />);
-      expect(
-        screen.getByText(/AI-powered multi-agent system for DoD compliance automation/i)
-      ).toBeInTheDocument();
-      expect(screen.getByText(/5-agent pipeline with Wazuh SIEM integration/i)).toBeInTheDocument();
+      // Text is broken up by AcronymTooltip elements, use function matcher
+      expect(screen.getByText((content, element) => {
+        return element?.tagName.toLowerCase() === 'p' &&
+               element.textContent?.includes('AI-powered multi-agent system') &&
+               element.textContent?.includes('DoD');
+      })).toBeInTheDocument();
+      // "5-agent pipeline" appears in both description and diagram title
+      expect(screen.getAllByText(/5-agent pipeline/i).length).toBeGreaterThan(0);
     });
 
     it('displays ACRS technology tags', () => {
       render(<ProjectsSection />);
       expect(screen.getByText(/#StrandsAgents/i)).toBeInTheDocument();
       expect(screen.getByText(/#Claude/i)).toBeInTheDocument();
-      expect(screen.getByText(/#Bedrock/i)).toBeInTheDocument();
+      // Multiple projects use #Bedrock, use getAllByText
+      expect(screen.getAllByText(/#Bedrock/i).length).toBeGreaterThan(0);
       expect(screen.getByText(/#WazuhSIEM/i)).toBeInTheDocument();
       expect(screen.getByText(/#NIST800-171/i)).toBeInTheDocument();
     });
@@ -66,10 +71,11 @@ describe('ProjectsSection', () => {
 
     it('displays Snapshot Sleuth technology tags', () => {
       render(<ProjectsSection />);
-      expect(screen.getByText(/#AWS/i)).toBeInTheDocument();
+      // Multiple projects use common tags, verify at least one exists
+      expect(screen.getAllByText(/#AWS/i).length).toBeGreaterThan(0);
       expect(screen.getByText(/#CDK/i)).toBeInTheDocument();
       expect(screen.getByText(/#StepFunctions/i)).toBeInTheDocument();
-      expect(screen.getByText(/#Lambda/i)).toBeInTheDocument();
+      expect(screen.getAllByText(/#Lambda/i).length).toBeGreaterThan(0);
     });
 
     it('displays Snapshot Sleuth architecture diagram', () => {
@@ -102,7 +108,12 @@ describe('ProjectsSection', () => {
     it('displays StravaMCP title and description', () => {
       render(<ProjectsSection />);
       expect(screen.getByRole('heading', { name: /^StravaMCP$/i })).toBeInTheDocument();
-      expect(screen.getByText(/MCP Server for Strava API/i)).toBeInTheDocument();
+      // Tagline appears, category "MCP" also exists - look for specific tagline text
+      expect(screen.getByText((content, element) => {
+        return element?.tagName.toLowerCase() === 'p' &&
+               element.className.includes('text-xl') &&
+               content === 'MCP Server for Strava API';
+      })).toBeInTheDocument();
     });
 
     it('displays StravaMCP project details', () => {

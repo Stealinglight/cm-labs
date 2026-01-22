@@ -52,7 +52,8 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     globals: true,
-    setupFiles: './src/setupTests.ts',
+    setupFiles: './tests/setupTests.ts',
+    include: ['tests/**/*.test.{ts,tsx}'],
   },
   build: {
     target: 'esnext',

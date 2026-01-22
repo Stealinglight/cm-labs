@@ -1,4 +1,19 @@
 import { Briefcase, Calendar, TrendingUp } from 'lucide-react';
+import { AcronymTooltip } from './AcronymTooltip';
+import type { ReactNode } from 'react';
+
+// Helper to render text with acronym tooltips
+function renderWithAcronyms(text: string): ReactNode {
+  const acronymPattern = /\b(SOC)\b/g;
+  const parts = text.split(acronymPattern);
+
+  return parts.map((part, index) => {
+    if (part === 'SOC') {
+      return <AcronymTooltip key={index} acronym={part} />;
+    }
+    return part;
+  });
+}
 
 export function ExperienceSection() {
   const phases = [
@@ -156,12 +171,12 @@ export function ExperienceSection() {
                       <div>
                         <div className="flex items-center gap-2 mb-1">
                           <Briefcase className="w-4 h-4 text-[#00d9ff]" />
-                          <h4 className="text-lg text-white">{role.company}</h4>
+                          <h4 className="text-lg text-white">{renderWithAcronyms(role.company)}</h4>
                         </div>
                         {role.team && (
                           <p className="text-gray-500 text-sm ml-6">{role.team}</p>
                         )}
-                        <p className="text-gray-300 ml-6">{role.title}</p>
+                        <p className="text-gray-300 ml-6">{renderWithAcronyms(role.title)}</p>
                       </div>
                       <div className="flex items-center gap-2 text-gray-500 text-sm mt-2 md:mt-0">
                         <Calendar className="w-3 h-3" />

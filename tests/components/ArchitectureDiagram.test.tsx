@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { ArchitectureDiagram } from './ArchitectureDiagram';
+import { ArchitectureDiagram } from '../../src/components/ArchitectureDiagram';
 
 describe('ArchitectureDiagram', () => {
   const mockNodes = [

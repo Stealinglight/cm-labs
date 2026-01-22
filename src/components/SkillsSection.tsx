@@ -1,3 +1,8 @@
+import { AcronymTooltip } from './AcronymTooltip';
+
+// Skills that have acronym tooltips
+const acronymSkills = new Set(['NIST 800-171', 'CMMC', 'RMF']);
+
 export function SkillsSection() {
   const skills = {
     languages: ['Python', 'TypeScript', 'Go', 'Bash'],
@@ -5,6 +10,13 @@ export function SkillsSection() {
     cloud: ['AWS', 'CDK', 'Lambda', 'S3', 'EventBridge', 'Step Functions'],
     security: ['Wazuh SIEM', 'NIST 800-171', 'CMMC', 'RMF'],
     development: ['Git', 'Docker', 'CI/CD', 'IaC'],
+  };
+
+  const renderSkill = (skill: string) => {
+    if (acronymSkills.has(skill)) {
+      return <AcronymTooltip acronym={skill} />;
+    }
+    return skill;
   };
 
   return (
@@ -79,7 +91,7 @@ export function SkillsSection() {
                   key={skill}
                   className="px-4 py-2 bg-[#0a0a0a] border border-[#00ff41]/30 text-[#00ff41] font-mono text-sm hover:border-[#00ff41] hover:shadow-[0_0_10px_rgba(0,255,65,0.3)] transition-all"
                 >
-                  {skill}
+                  {renderSkill(skill)}
                 </span>
               ))}
             </div>

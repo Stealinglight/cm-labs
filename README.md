@@ -72,10 +72,12 @@ cm-labs/
 │   │   ├── HeroSection.tsx
 │   │   ├── Navigation.tsx
 │   │   └── ...             # Other page sections
+│   ├── data/               # Data modules for projects, diagrams, acronyms
 │   ├── styles/             # Global styles
 │   ├── App.tsx             # Main application component
 │   ├── main.tsx            # Application entry point
 │   └── index.css           # Global CSS and Tailwind imports
+├── tests/                  # Test files (Vitest + React Testing Library)
 ├── vite.config.ts          # Vite configuration
 ├── package.json
 └── README.md

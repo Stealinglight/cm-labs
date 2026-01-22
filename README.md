@@ -18,6 +18,7 @@ A modern, responsive portfolio website showcasing technical expertise in AI Secu
 
 ## 🛠️ Tech Stack
 
+- **Runtime**: Bun (local development)
 - **Framework**: React 18 with TypeScript
 - **Build Tool**: Vite
 - **Styling**: Tailwind CSS
@@ -31,8 +32,8 @@ A modern, responsive portfolio website showcasing technical expertise in AI Secu
 
 ### Prerequisites
 
-- Node.js 20.x or higher
-- npm or yarn
+- [Bun](https://bun.sh/) 1.0 or higher (recommended)
+- Or Node.js 20.x or higher with npm
 
 ### Installation
 
@@ -44,21 +45,21 @@ cd cm-labs
 
 2. Install dependencies:
 ```bash
-npm install
+bun install
 ```
 
 3. Start the development server:
 ```bash
-npm run dev
+bun run dev
 ```
 
 The application will open automatically at `http://localhost:3000`
 
 ## 📝 Available Scripts
 
-- `npm run dev` - Start development server with hot reload
-- `npm run build` - Create production build in `build/` directory
-- `npm run test` - Run test suite in watch mode
+- `bun run dev` - Start development server with hot reload
+- `bun run build` - Create production build in `build/` directory
+- `bun run test` - Run test suite in watch mode
 
 ## 📂 Project Structure
 
@@ -93,8 +94,8 @@ The site uses a consistent design language:
 Tests are written using Vitest and React Testing Library:
 
 ```bash
-npm run test              # Run tests in watch mode
-npm run test -- --run     # Run tests once
+bun run test              # Run tests in watch mode
+bun run test --run        # Run tests once
 ```
 
 ## 🚀 Deployment
@@ -140,4 +141,4 @@ This project is open source and available under the MIT License.
 
 ---
 
-Built with ❤️ using React, TypeScript, and Vite
+Built with ❤️ using Bun, React, TypeScript, and Vite

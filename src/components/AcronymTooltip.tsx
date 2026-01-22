@@ -27,7 +27,7 @@ export function AcronymTooltip({ acronym, className }: AcronymTooltipProps) {
         </span>
       </TooltipTrigger>
       <TooltipContent
-        className="bg-[#1a1a1a] border border-[#00ff41]/30 text-gray-200 font-mono max-w-xs"
+        className="bg-[#1a1a1a]/95 border border-[#00ff41]/30 text-gray-200 font-mono max-w-xs backdrop-blur-sm"
         sideOffset={4}
       >
         <div className="text-[#00ff41] font-bold">{def.fullName}</div>

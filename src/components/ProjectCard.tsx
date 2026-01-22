@@ -4,22 +4,26 @@ import { ArchitectureDiagram } from './ArchitectureDiagram';
 import { AcronymTooltip } from './AcronymTooltip';
 import type { Project } from '../data/projects';
 import { acronyms } from '../data/acronyms';
+import { cn } from './ui/utils';
+
+// Pre-compile regex pattern at module level for performance
+const acronymKeys = Object.keys(acronyms);
+const sortedKeys = acronymKeys.sort((a, b) => b.length - a.length);
+const acronymPattern = new RegExp(
+  `\\b(${sortedKeys.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})\\b`,
+  'g'
+);
 
 // Helper to render text with acronym tooltips
 function renderWithAcronyms(text: string): ReactNode {
-  // Build pattern from all known acronyms
-  const acronymKeys = Object.keys(acronyms);
-  // Sort by length descending to match longer acronyms first (e.g., "NIST 800-171" before "NIST")
-  const sortedKeys = acronymKeys.sort((a, b) => b.length - a.length);
-  const pattern = new RegExp(`\\b(${sortedKeys.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})\\b`, 'g');
-
-  const parts = text.split(pattern);
+  const parts = text.split(acronymPattern);
 
   return parts.map((part, index) => {
     if (acronyms[part]) {
-      return <AcronymTooltip key={index} acronym={part} />;
+      // Use part + index for better key uniqueness
+      return <AcronymTooltip key={`${part}-${index}`} acronym={part} />;
     }
-    return part;
+    return <span key={`text-${index}`}>{part}</span>;
   });
 }
 
@@ -82,10 +86,15 @@ function ProjectActions({ project }: { project: Project }) {
         </a>
       )}
       {project.learnMoreUrl && (
-        <button className="flex items-center gap-2 px-6 py-3 bg-[#00d9ff]/10 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all group/btn">
+        <a
+          href={project.learnMoreUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-6 py-3 bg-[#00d9ff]/10 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all group/btn"
+        >
           <span>Learn More</span>
           <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-        </button>
+        </a>
       )}
     </div>
   );

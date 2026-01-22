@@ -1,4 +1,4 @@
-import { MapPin, ExternalLink } from 'lucide-react';
+import { MapPin, ExternalLink, GraduationCap } from 'lucide-react';
 
 export function AboutSection() {
   return (
@@ -15,21 +15,22 @@ export function AboutSection() {
             <h2 className="text-3xl md:text-4xl mb-8 tracking-wide uppercase">About</h2>
             <div className="space-y-6 text-gray-400 leading-relaxed">
               <p>
-                I'm a Security AI Engineer on the Operational Research team at AWS Security, 
+                I'm an AI Security Engineer on the Operational Research & Development team at AWS Security,
                 where I build agentic solutions for security automation and compliance.
               </p>
               <p>
-                My background combines film production management (coordinating 30+ person crews 
-                under pressure) with hardcore technical security engineering - giving me a unique 
-                perspective on managing complex distributed systems.
+                With nearly 4 years at AWS, I've progressed from SOC operations through cloud security response
+                to my current focus on AI-driven security systems. My work involves multi-agent architectures,
+                LLM integration for validation processes, and automated compliance frameworks.
               </p>
               <p>
-                Currently focused on multi-agent AI architectures for security operations, automated 
-                compliance frameworks, and LLM-powered threat analysis.
+                My background combines creative problem-solving from 8 years in film production (managing
+                30+ person crews under pressure across Asia) with hardcore technical security engineering -
+                giving me a unique perspective on coordinating complex distributed systems.
               </p>
               <div className="pt-4 border-t border-white/10">
                 <p className="text-sm text-gray-500">
-                  Also: Creative work →{' '}
+                  Creative work →{' '}
                   <a
                     href="https://stealinglight.hk"
                     target="_blank"
@@ -45,13 +46,13 @@ export function AboutSection() {
           </div>
 
           {/* Right column */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             {/* Current Role */}
             <div className="border border-white/10 p-6 bg-[#1a1a1a]/50">
               <h3 className="text-sm uppercase tracking-widest text-[#00d9ff] mb-3">Current Role</h3>
               <p className="mb-1">AI Security Engineer</p>
-              <p className="text-gray-400 mb-2">AWS Security - Operational Research</p>
-              <p className="text-sm text-gray-500 font-mono">2021 - Present</p>
+              <p className="text-gray-400 mb-2">AWS Security - Operational Research & Development</p>
+              <p className="text-sm text-gray-500 font-mono">May 2022 - Present (~4 years)</p>
             </div>
 
             {/* Location */}
@@ -77,15 +78,39 @@ export function AboutSection() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#00ff41] font-mono">→</span>
-                  <span>Compliance frameworks</span>
+                  <span>LLM integration</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#00ff41] font-mono">→</span>
-                  <span>LLM orchestration</span>
+                  <span>Cloud security response</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#00ff41] font-mono">→</span>
-                  <span>Threat analysis</span>
+                  <span>Data enrichment</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Education */}
+            <div className="border border-white/10 p-6 bg-[#1a1a1a]/50">
+              <h3 className="text-sm uppercase tracking-widest text-[#00d9ff] mb-4 flex items-center gap-2">
+                <GraduationCap className="w-4 h-4" />
+                Education
+              </h3>
+              <ul className="space-y-3 text-sm text-gray-400">
+                <li className="flex items-start gap-2">
+                  <span className="text-[#00ff41] font-mono">•</span>
+                  <div>
+                    <p className="text-gray-300">BS Cybersecurity & Networking</p>
+                    <p className="text-gray-500">UMGC - Minor in Data Science</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#00ff41] font-mono">•</span>
+                  <div>
+                    <p className="text-gray-300">SANS Technology Institute</p>
+                    <p className="text-gray-500">12-month training program</p>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -96,15 +121,15 @@ export function AboutSection() {
               <ul className="space-y-2 text-sm text-gray-400">
                 <li className="flex items-start gap-2">
                   <span className="text-[#00ff41] font-mono">•</span>
-                  <span>Film production & cinematography</span>
+                  <span>Film production (DP/Editor)</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#00ff41] font-mono">•</span>
-                  <span>CrossFit L1 trainer</span>
+                  <span>CrossFit L1 Trainer</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#00ff41] font-mono">•</span>
-                  <span>Crisis management certified</span>
+                  <span>TCCC trained</span>
                 </li>
               </ul>
             </div>

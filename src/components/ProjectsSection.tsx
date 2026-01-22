@@ -36,40 +36,48 @@ export function ProjectsSection() {
               </div>
 
               <p className="text-gray-400 leading-relaxed mb-6">
-                AI-powered multi-agent system for DoD compliance automation using Strands Agents 
-                and Claude 4.5. Orchestrates compliance workflows across NIST 800-171, CMMC Level 2, 
-                and RMF frameworks with automated response capabilities.
+                AI-powered multi-agent system for DoD compliance automation. Automatically detects, analyzes,
+                and remediates NIST 800-171/CMMC violations with confidence-based decision routing.
+                Features a 5-agent pipeline with Wazuh SIEM integration and immutable audit trails.
               </p>
 
               <div className="flex flex-wrap gap-2 mb-8">
                 <span className="font-mono text-xs text-[#00d9ff]">#StrandsAgents</span>
-                <span className="font-mono text-xs text-[#00d9ff]">#Claude4.5</span>
+                <span className="font-mono text-xs text-[#00d9ff]">#Claude</span>
+                <span className="font-mono text-xs text-[#00d9ff]">#Bedrock</span>
                 <span className="font-mono text-xs text-[#00d9ff]">#WazuhSIEM</span>
                 <span className="font-mono text-xs text-[#00d9ff]">#NIST800-171</span>
-                <span className="font-mono text-xs text-[#00d9ff]">#CMMC</span>
                 <span className="font-mono text-xs text-[#00d9ff]">#Python</span>
               </div>
 
               {/* Architecture diagram */}
               <div className="bg-[#0a0a0a] border border-[#00ff41]/20 p-6 mb-6">
                 <ArchitectureDiagram
-                  title="ACRS Architecture"
+                  title="ACRS 5-Agent Pipeline"
                   nodes={[
-                    { id: 'orchestrator', label: 'Multi-Agent\nOrchestrator', x: 50, y: 50, color: '#00d9ff' },
-                    { id: 'nist', label: 'NIST 800-171\nAgent', x: 20, y: 150, color: '#00ff41' },
-                    { id: 'cmmc', label: 'CMMC L2\nAgent', x: 50, y: 150, color: '#00ff41' },
-                    { id: 'rmf', label: 'RMF\nAgent', x: 80, y: 150, color: '#00ff41' },
-                    { id: 'response', label: 'Automated\nResponse', x: 50, y: 250, color: '#00d9ff' },
+                    { id: 'wazuh', label: 'Wazuh\nSIEM', x: 10, y: 50, color: '#00d9ff' },
+                    { id: 'detection', label: 'Detection\nAgent', x: 30, y: 50, color: '#00ff41' },
+                    { id: 'analysis', label: 'Analysis\nAgent', x: 50, y: 50, color: '#00ff41' },
+                    { id: 'decision', label: 'Decision\nAgent', x: 70, y: 50, color: '#00ff41' },
+                    { id: 'remediation', label: 'Remediation\nAgent', x: 70, y: 150, color: '#00ff41' },
+                    { id: 'escalation', label: 'Escalation\nTicket', x: 90, y: 100, color: '#ff6b6b' },
+                    { id: 'documentation', label: 'Documentation\nAgent', x: 50, y: 200, color: '#00ff41' },
+                    { id: 's3', label: 'S3 Audit\nLogs', x: 50, y: 280, color: '#00d9ff' },
                   ]}
                   connections={[
-                    { from: 'orchestrator', to: 'nist' },
-                    { from: 'orchestrator', to: 'cmmc' },
-                    { from: 'orchestrator', to: 'rmf' },
-                    { from: 'nist', to: 'response' },
-                    { from: 'cmmc', to: 'response' },
-                    { from: 'rmf', to: 'response' },
+                    { from: 'wazuh', to: 'detection' },
+                    { from: 'detection', to: 'analysis' },
+                    { from: 'analysis', to: 'decision' },
+                    { from: 'decision', to: 'remediation' },
+                    { from: 'decision', to: 'escalation' },
+                    { from: 'remediation', to: 'documentation' },
+                    { from: 'escalation', to: 'documentation' },
+                    { from: 'documentation', to: 's3' },
                   ]}
                 />
+                <p className="text-xs text-gray-500 mt-4 text-center font-mono">
+                  Confidence ≥ 0.8 → Auto-remediate | {'<'} 0.8 → Escalate
+                </p>
               </div>
 
               <div className="flex flex-wrap gap-4">
@@ -96,52 +104,216 @@ export function ProjectsSection() {
                 </p>
                 <div className="flex flex-wrap gap-2 mb-6">
                   <span className="px-3 py-1 bg-[#0a0a0a] border border-[#00ff41]/30 text-[#00ff41] text-xs font-mono">
-                    Open Source
+                    Step Functions
                   </span>
                   <span className="px-3 py-1 bg-[#0a0a0a] border border-[#00ff41]/30 text-[#00ff41] text-xs font-mono">
-                    Security Operations
+                    Forensics
                   </span>
                 </div>
               </div>
 
               <p className="text-gray-400 leading-relaxed mb-6">
-                AWS-native automated EBS snapshot forensics platform that orchestrates end-to-end 
-                investigation workflows. Runs industry-standard forensic tools, captures evidence, 
-                and integrates with case management systems.
+                AWS-native automated EBS snapshot forensics platform. Orchestrates end-to-end investigation
+                workflows with parallel forensic tool execution (YARA, ClamAV, EvidenceMiner, Log2Timeline),
+                KMS-encrypted evidence storage, and pluggable case management.
               </p>
 
               <div className="flex flex-wrap gap-2 mb-8">
                 <span className="font-mono text-xs text-[#00d9ff]">#AWS</span>
                 <span className="font-mono text-xs text-[#00d9ff]">#CDK</span>
-                <span className="font-mono text-xs text-[#00d9ff]">#Lambda</span>
                 <span className="font-mono text-xs text-[#00d9ff]">#StepFunctions</span>
-                <span className="font-mono text-xs text-[#00d9ff]">#Forensics</span>
-                <span className="font-mono text-xs text-[#00d9ff]">#OpenSource</span>
+                <span className="font-mono text-xs text-[#00d9ff]">#Lambda</span>
+                <span className="font-mono text-xs text-[#00d9ff]">#TypeScript</span>
+                <span className="font-mono text-xs text-[#00d9ff]">#Python</span>
               </div>
 
               {/* Architecture diagram */}
               <div className="bg-[#0a0a0a] border border-[#00ff41]/20 p-6 mb-6">
                 <ArchitectureDiagram
-                  title="Snapshot Sleuth Architecture"
+                  title="Snapshot Sleuth Pipeline"
                   nodes={[
-                    { id: 'snapshot', label: 'EBS\nSnapshot', x: 20, y: 50, color: '#00d9ff' },
-                    { id: 'pipeline', label: 'Analysis\nPipeline', x: 50, y: 50, color: '#00ff41' },
-                    { id: 'tools', label: 'Forensic\nTools', x: 50, y: 150, color: '#00ff41' },
-                    { id: 'evidence', label: 'Evidence\nCollection', x: 80, y: 150, color: '#00d9ff' },
-                    { id: 'report', label: 'Case\nReporting', x: 80, y: 250, color: '#00d9ff' },
+                    { id: 'trigger', label: 'Trigger\n(CLI/Event)', x: 10, y: 50, color: '#00d9ff' },
+                    { id: 'validate', label: 'Validate\nSnapshot', x: 30, y: 50, color: '#00ff41' },
+                    { id: 'provision', label: 'Provision\nEnvironment', x: 50, y: 50, color: '#00ff41' },
+                    { id: 'yara', label: 'YARA', x: 20, y: 150, color: '#00ff41' },
+                    { id: 'clamav', label: 'ClamAV', x: 40, y: 150, color: '#00ff41' },
+                    { id: 'miner', label: 'Evidence\nMiner', x: 60, y: 150, color: '#00ff41' },
+                    { id: 'timeline', label: 'Log2\nTimeline', x: 80, y: 150, color: '#00ff41' },
+                    { id: 's3', label: 'S3\nEvidence', x: 50, y: 230, color: '#00d9ff' },
+                    { id: 'notify', label: 'Notify\n(Slack/Email)', x: 80, y: 230, color: '#00d9ff' },
                   ]}
                   connections={[
-                    { from: 'snapshot', to: 'pipeline' },
-                    { from: 'pipeline', to: 'tools' },
-                    { from: 'tools', to: 'evidence' },
-                    { from: 'evidence', to: 'report' },
+                    { from: 'trigger', to: 'validate' },
+                    { from: 'validate', to: 'provision' },
+                    { from: 'provision', to: 'yara' },
+                    { from: 'provision', to: 'clamav' },
+                    { from: 'provision', to: 'miner' },
+                    { from: 'provision', to: 'timeline' },
+                    { from: 'yara', to: 's3' },
+                    { from: 'clamav', to: 's3' },
+                    { from: 'miner', to: 's3' },
+                    { from: 'timeline', to: 's3' },
+                    { from: 's3', to: 'notify' },
                   ]}
                 />
+                <p className="text-xs text-gray-500 mt-4 text-center font-mono">
+                  Parallel forensic analysis → KMS-encrypted storage → Case management
+                </p>
               </div>
 
               <div className="flex flex-wrap gap-4">
                 <a
                   href="https://github.com/Stealinglight/Snapshot-Sleuth"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 bg-[#00d9ff]/10 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all group/btn"
+                >
+                  <Github className="w-4 h-4" />
+                  <span>View on GitHub</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Project 3: StravaMCP */}
+          <div className="border border-white/10 bg-[#1a1a1a]/30 overflow-hidden hover:border-[#00d9ff]/50 transition-all group">
+            <div className="p-8 md:p-12">
+              <div className="mb-6">
+                <div className="flex items-start justify-between mb-4">
+                  <h3 className="text-3xl md:text-4xl tracking-wide">StravaMCP</h3>
+                  <span className="px-3 py-1 bg-[#00ff41]/10 border border-[#00ff41]/30 text-[#00ff41] text-xs uppercase tracking-wider">
+                    Open Source
+                  </span>
+                </div>
+                <p className="text-xl text-gray-300 mb-4">
+                  MCP Server for Strava API
+                </p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <span className="px-3 py-1 bg-[#0a0a0a] border border-[#00ff41]/30 text-[#00ff41] text-xs font-mono">
+                    MCP
+                  </span>
+                  <span className="px-3 py-1 bg-[#0a0a0a] border border-[#00ff41]/30 text-[#00ff41] text-xs font-mono">
+                    Serverless
+                  </span>
+                </div>
+              </div>
+
+              <p className="text-gray-400 leading-relaxed mb-6">
+                Remote MCP server for Strava API running on AWS Lambda. Use your Strava fitness data
+                with Claude for activity analysis, training insights, and route planning.
+                Runs completely free on AWS Free Tier.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-8">
+                <span className="font-mono text-xs text-[#00d9ff]">#MCP</span>
+                <span className="font-mono text-xs text-[#00d9ff]">#AWS</span>
+                <span className="font-mono text-xs text-[#00d9ff]">#Lambda</span>
+                <span className="font-mono text-xs text-[#00d9ff]">#TypeScript</span>
+                <span className="font-mono text-xs text-[#00d9ff]">#Strava</span>
+              </div>
+
+              {/* Architecture diagram */}
+              <div className="bg-[#0a0a0a] border border-[#00ff41]/20 p-6 mb-6">
+                <ArchitectureDiagram
+                  title="StravaMCP Architecture"
+                  nodes={[
+                    { id: 'claude', label: 'Claude\nDesktop/Code', x: 20, y: 50, color: '#00d9ff' },
+                    { id: 'mcp', label: 'MCP\nProtocol', x: 50, y: 50, color: '#00ff41' },
+                    { id: 'lambda', label: 'Lambda\nFunction', x: 50, y: 130, color: '#00ff41' },
+                    { id: 'strava', label: 'Strava\nAPI', x: 80, y: 130, color: '#00d9ff' },
+                  ]}
+                  connections={[
+                    { from: 'claude', to: 'mcp' },
+                    { from: 'mcp', to: 'lambda' },
+                    { from: 'lambda', to: 'strava' },
+                  ]}
+                />
+                <p className="text-xs text-gray-500 mt-4 text-center font-mono">
+                  Activities • Stats • Routes → Claude analysis
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="https://github.com/Stealinglight/StravaMCP"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 bg-[#00d9ff]/10 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all group/btn"
+                >
+                  <Github className="w-4 h-4" />
+                  <span>View on GitHub</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Project 4: wrist-agent */}
+          <div className="border border-white/10 bg-[#1a1a1a]/30 overflow-hidden hover:border-[#00d9ff]/50 transition-all group">
+            <div className="p-8 md:p-12">
+              <div className="mb-6">
+                <div className="flex items-start justify-between mb-4">
+                  <h3 className="text-3xl md:text-4xl tracking-wide">wrist-agent</h3>
+                  <span className="px-3 py-1 bg-[#00ff41]/10 border border-[#00ff41]/30 text-[#00ff41] text-xs uppercase tracking-wider">
+                    Open Source
+                  </span>
+                </div>
+                <p className="text-xl text-gray-300 mb-4">
+                  Apple Watch → Bedrock → Notes
+                </p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <span className="px-3 py-1 bg-[#0a0a0a] border border-[#00ff41]/30 text-[#00ff41] text-xs font-mono">
+                    Go
+                  </span>
+                  <span className="px-3 py-1 bg-[#0a0a0a] border border-[#00ff41]/30 text-[#00ff41] text-xs font-mono">
+                    Voice AI
+                  </span>
+                </div>
+              </div>
+
+              <p className="text-gray-400 leading-relaxed mb-6">
+                One-tap voice capture from Apple Watch that routes through AWS Lambda to Amazon Bedrock
+                for AI processing, then automatically creates Notes or Reminders. Capture thoughts
+                instantly and let AI organize them.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-8">
+                <span className="font-mono text-xs text-[#00d9ff]">#Go</span>
+                <span className="font-mono text-xs text-[#00d9ff]">#AWS</span>
+                <span className="font-mono text-xs text-[#00d9ff]">#Bedrock</span>
+                <span className="font-mono text-xs text-[#00d9ff]">#AppleWatch</span>
+                <span className="font-mono text-xs text-[#00d9ff]">#Voice</span>
+              </div>
+
+              {/* Architecture diagram */}
+              <div className="bg-[#0a0a0a] border border-[#00ff41]/20 p-6 mb-6">
+                <ArchitectureDiagram
+                  title="wrist-agent Pipeline"
+                  nodes={[
+                    { id: 'watch', label: 'Apple\nWatch', x: 15, y: 50, color: '#00d9ff' },
+                    { id: 'voice', label: 'Voice\nCapture', x: 35, y: 50, color: '#00ff41' },
+                    { id: 'lambda', label: 'Lambda\n(Go)', x: 55, y: 50, color: '#00ff41' },
+                    { id: 'bedrock', label: 'Amazon\nBedrock', x: 75, y: 50, color: '#00ff41' },
+                    { id: 'notes', label: 'Apple\nNotes', x: 65, y: 150, color: '#00d9ff' },
+                    { id: 'reminders', label: 'Apple\nReminders', x: 85, y: 150, color: '#00d9ff' },
+                  ]}
+                  connections={[
+                    { from: 'watch', to: 'voice' },
+                    { from: 'voice', to: 'lambda' },
+                    { from: 'lambda', to: 'bedrock' },
+                    { from: 'bedrock', to: 'notes' },
+                    { from: 'bedrock', to: 'reminders' },
+                  ]}
+                />
+                <p className="text-xs text-gray-500 mt-4 text-center font-mono">
+                  One tap → Voice → AI processing → Organized output
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="https://github.com/Stealinglight/wrist-agent"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-6 py-3 bg-[#00d9ff]/10 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all group/btn"

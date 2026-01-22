@@ -37,10 +37,10 @@ export function ContactSection() {
                 <h3 className="text-sm uppercase tracking-widest text-[#00d9ff]">Email</h3>
               </div>
               <a
-                href="mailto:chris@example.com"
+                href="mailto:stealinglight+chrismc@gmail.com"
                 className="text-gray-300 hover:text-[#00ff41] transition-colors font-mono"
               >
-                chris@example.com
+                stealinglight@gmail.com
               </a>
             </div>
 

@@ -24,7 +24,7 @@ if (!appName || !githubOwner || !githubRepository) {
 
 // Hardcoded AWS account and region for deployment stability
 const AWS_ACCOUNT_ID = '383579119744';
-const AWS_REGION = 'us-east-1';
+const AWS_REGION = 'us-west-2';
 
 // Create the stack
 new PortfolioStack(app, 'PortfolioInfrastructureStack', {

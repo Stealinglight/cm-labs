@@ -8,10 +8,10 @@ A technical portfolio website built with React, TypeScript, and Vite. The site i
 
 ## Development Commands
 
-- `npm i` - Install dependencies
-- `npm run dev` - Start Vite dev server at http://localhost:3000 (opens automatically with hot reload)
-- `npm run build` - Create production build in `build/` directory
-- `npm run test` - Run Vitest test runner in watch mode
+- `bun install` - Install dependencies (use `npm i` for infrastructure/)
+- `bun run dev` - Start Vite dev server at http://localhost:3000 (opens automatically with hot reload)
+- `bun run build` - Create production build in `build/` directory
+- `bun run test` - Run Vitest test runner in watch mode
 
 ## Architecture
 
@@ -49,7 +49,7 @@ The app follows a section-based architecture where `App.tsx` orchestrates page s
 - Setup file: `src/setupTests.ts`
 - Test files should live in `src/` and follow `*.test.tsx` or `*.spec.tsx` naming
 - Example test exists at `src/App.test.tsx`
-- Run tests with `npm run test` (starts Vitest in watch mode)
+- Run tests with `bun run test` (starts Vitest in watch mode)
 
 ## Path Resolution
 

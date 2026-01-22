@@ -33,7 +33,7 @@ A modern, responsive portfolio website showcasing technical expertise in AI Secu
 ### Prerequisites
 
 - [Bun](https://bun.sh/) 1.0 or higher (recommended)
-- Or Node.js 20.x or higher with npm
+- Or Node.js 20.11 or higher with npm
 
 ### Installation
 

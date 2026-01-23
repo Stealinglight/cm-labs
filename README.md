@@ -58,7 +58,7 @@ The application will open automatically at `http://localhost:3000`
 ## 📝 Available Scripts
 
 - `bun run dev` - Start development server with hot reload
-- `bun run build` - Create production build in `build/` directory
+- `bun run build` - Create production build in `dist/` directory
 - `bun run test` - Run test suite in watch mode
 
 ## 📂 Project Structure

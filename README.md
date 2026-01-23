@@ -60,6 +60,40 @@ The application will open automatically at `http://localhost:3000`
 - `bun run dev` - Start development server with hot reload
 - `bun run build` - Create production build in `build/` directory
 - `bun run test` - Run test suite in watch mode
+- `bun run sync-locks` - Regenerate package-lock.json after updating dependencies
+
+## 📦 Dependency Management
+
+This project uses **Bun** for local development and **npm** for Amplify deployments. Both lockfiles (`bun.lock` and `package-lock.json`) are committed to ensure consistency.
+
+### Adding or Updating Dependencies
+
+When adding or updating dependencies, follow these steps to keep both lockfiles in sync:
+
+1. **Use Bun as normal:**
+   ```bash
+   bun add <package>           # Add a dependency
+   bun add -d <package>        # Add a dev dependency
+   bun update <package>        # Update a specific package
+   ```
+
+2. **Regenerate package-lock.json:**
+   ```bash
+   bun run sync-locks
+   ```
+
+3. **Commit both lockfiles together:**
+   ```bash
+   git add bun.lock package-lock.json package.json
+   git commit -m "Add/Update <package>"
+   ```
+
+### Why Two Lockfiles?
+
+- **`bun.lock`** (104KB) - Used for fast local development with Bun
+- **`package-lock.json`** (287KB) - Required for `npm ci` in Amplify deployments
+
+Both lockfiles are treated as binary in Git (via `.gitattributes`) to prevent merge conflicts. If conflicts occur, regenerate the affected lockfile rather than manually merging.
 
 ## 📂 Project Structure
 

@@ -38,6 +38,10 @@ jobs:
           role-session-name: github-actions-deploy-infra
           aws-region: ${{ secrets.AWS_REGION }}
 
+      - name: Bootstrap CDK environment
+        working-directory: infrastructure
+        run: npx cdk bootstrap
+
       - name: Deploy CDK stack
         working-directory: infrastructure
         run: npx cdk deploy --require-approval never

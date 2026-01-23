@@ -22,6 +22,10 @@ if (!appName || !githubOwner || !githubRepository) {
   );
 }
 
+// Hardcoded AWS account and region for deployment stability
+const AWS_ACCOUNT_ID = '383579119744';
+const AWS_REGION = 'us-west-2';
+
 // Create the stack
 new PortfolioStack(app, 'PortfolioInfrastructureStack', {
   appName,
@@ -30,8 +34,8 @@ new PortfolioStack(app, 'PortfolioInfrastructureStack', {
   branchName,
   customDomain,
   env: {
-    account: process.env.CDK_DEFAULT_ACCOUNT,
-    region: process.env.CDK_DEFAULT_REGION,
+    account: AWS_ACCOUNT_ID,
+    region: AWS_REGION,
   },
   description: 'Infrastructure for portfolio website deployment via AWS Amplify',
   tags: {

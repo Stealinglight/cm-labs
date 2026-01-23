@@ -63,6 +63,7 @@
   "scripts": {
       "dev": "vite",
       "build": "vite build",
-      "test": "vitest"
+      "test": "vitest",
+      "sync-locks": "npm install --package-lock-only"
   }
 }

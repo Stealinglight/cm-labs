@@ -122,21 +122,23 @@ export class PortfolioStack extends Stack {
               // Display versions for debugging
               'echo "Node version:" && node --version',
               'echo "NPM version:" && npm --version',
-              // Install dependencies with error handling
+              // Install dependencies with error handling (package-lock.json is committed for Amplify)
               'echo "Installing dependencies..." && npm ci || (echo "npm ci failed" && exit 1)',
+              // Run tests - fail the build if tests fail
+              'echo "Running tests..." && npm run test -- --run || (echo "Tests failed" && exit 1)',
             ],
           },
           build: {
             commands: [
               // Build with explicit error handling
               'echo "Building application..." && npm run build || (echo "Build failed" && exit 1)',
-              // Verify build output exists
-              'echo "Verifying build output..." && ls -la build/ || (echo "Build directory not found" && exit 1)',
+              // Verify build output exists (Vite outputs to dist/)
+              'echo "Verifying build output..." && ls -la dist/ || (echo "dist directory not found" && exit 1)',
             ],
           },
         },
         artifacts: {
-          baseDirectory: 'build',
+          baseDirectory: 'dist',
           files: ['**/*'],
         },
         cache: {
@@ -157,7 +159,10 @@ export class PortfolioStack extends Stack {
     if (!this.customDomain) return;
 
     const domain = app.addDomain(this.customDomain, {
-      enableAutoSubdomain: false,
+      // Enable auto-subdomain for preview branches (e.g., feature-new-ui.stealinglight.hk)
+      enableAutoSubdomain: true,
+      // Patterns for auto-subdomain creation matching autoBranchCreation patterns
+      autoSubDomainCreationPatterns: ['feature/*', 'feat/*', 'fix/*', 'bugfix/*', 'hotfix/*'],
     });
 
     domain.mapRoot(mainBranch);

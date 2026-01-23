@@ -114,7 +114,7 @@ aws cloudformation describe-stacks \
 The Amplify build is configured for Vite:
 
 - **Build command**: `npm run build`
-- **Build output**: `build/` directory
+- **Build output**: `dist/` directory
 - **Node version**: 20.x (via `_LIVE_UPDATES` environment variable)
 - **Cache**: `node_modules/`
 
@@ -167,7 +167,7 @@ Check the Amplify Console for detailed build logs:
 Common issues:
 - **Missing dependencies**: Ensure `package.json` is up to date
 - **Build errors**: Test locally with `npm run build`
-- **Wrong output directory**: Verify Vite outputs to `build/`
+- **Wrong output directory**: Verify Vite outputs to `dist/`
 
 ### Stack Updates
 

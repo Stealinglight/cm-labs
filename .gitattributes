@@ -1,0 +1,3 @@
+# Treat lockfiles as binary to reduce merge conflicts
+package-lock.json merge=binary
+bun.lock merge=binary

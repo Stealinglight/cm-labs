@@ -53,7 +53,7 @@ function CategoryTags({ categories }: { categories: string[] }) {
           href="#skills"
           onClick={createScrollHandler('skills')}
           className="px-3 py-1 bg-[#0a0a0a] border border-[#00ff41]/30 text-[#00ff41] text-xs font-mono hover:bg-[#00ff41]/10 hover:border-[#00ff41]/50 transition-colors cursor-pointer"
-          title={`View related skills`}
+          title="View related skills"
         >
           {category}
         </a>
@@ -71,7 +71,7 @@ function HashtagList({ hashtags }: { hashtags: string[] }) {
           href="#skills"
           onClick={createScrollHandler('skills')}
           className="font-mono text-xs text-[#00d9ff] hover:text-[#00ff41] transition-colors cursor-pointer"
-          title={`View related skills`}
+          title="View related skills"
         >
           {tag}
         </a>

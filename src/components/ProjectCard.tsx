@@ -44,27 +44,52 @@ function ProjectBadge({ type }: { type: 'featured' | 'open-source' }) {
 }
 
 function CategoryTags({ categories }: { categories: string[] }) {
+  const scrollToSkills = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById('skills');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="flex flex-wrap gap-2 mb-6">
       {categories.map((category) => (
-        <span
+        <a
           key={category}
-          className="px-3 py-1 bg-[#0a0a0a] border border-[#00ff41]/30 text-[#00ff41] text-xs font-mono"
+          href="#skills"
+          onClick={scrollToSkills}
+          className="px-3 py-1 bg-[#0a0a0a] border border-[#00ff41]/30 text-[#00ff41] text-xs font-mono hover:bg-[#00ff41]/10 hover:border-[#00ff41]/50 transition-colors cursor-pointer"
+          title={`View related skills`}
         >
           {category}
-        </span>
+        </a>
       ))}
     </div>
   );
 }
 
 function HashtagList({ hashtags }: { hashtags: string[] }) {
+  const scrollToSkills = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById('skills');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="flex flex-wrap gap-2 mb-8">
       {hashtags.map((tag) => (
-        <span key={tag} className="font-mono text-xs text-[#00d9ff]">
+        <a
+          key={tag}
+          href="#skills"
+          onClick={scrollToSkills}
+          className="font-mono text-xs text-[#00d9ff] hover:text-[#00ff41] transition-colors cursor-pointer"
+          title={`View related skills`}
+        >
           {tag}
-        </span>
+        </a>
       ))}
     </div>
   );

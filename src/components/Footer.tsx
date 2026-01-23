@@ -1,9 +1,30 @@
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Github, Linkedin, Mail } from 'lucide-react';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   const navLinks = ['About', 'Projects', 'Skills', 'Blog', 'Contact'];
+
+  const socialLinks = [
+    {
+      name: 'GitHub',
+      url: 'https://github.com/Stealinglight',
+      icon: Github,
+      label: 'View GitHub profile',
+    },
+    {
+      name: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/cmcmillon',
+      icon: Linkedin,
+      label: 'Connect on LinkedIn',
+    },
+    {
+      name: 'Email',
+      url: 'mailto:stealinglight@gmail.com',
+      icon: Mail,
+      label: 'Send an email',
+    },
+  ];
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId.toLowerCase());
@@ -16,10 +37,26 @@ export function Footer() {
     <footer className="bg-[#0a0a0a] border-t border-white/10 py-12 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
-          {/* Left - Name and title */}
+          {/* Left - Name, title, and social links */}
           <div>
-            <div className="font-mono text-[#00ff41] mb-2">CM</div>
-            <p className="text-gray-400">Security AI Engineer</p>
+            <a href="/" className="font-mono text-[#00ff41] mb-2 block hover:text-[#00d9ff] transition-colors">CM</a>
+            <p className="text-gray-400 mb-4">Security AI Engineer</p>
+            {/* Social Links */}
+            <div className="flex gap-4">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target={social.url.startsWith('mailto:') ? undefined : '_blank'}
+                  rel={social.url.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                  aria-label={social.label}
+                  title={social.label}
+                  className="text-gray-400 hover:text-[#00d9ff] transition-colors"
+                >
+                  <social.icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Center - Navigation */}

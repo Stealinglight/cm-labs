@@ -1,19 +1,19 @@
 import { Mail, Github, Linkedin, MapPin, Send } from 'lucide-react';
 import { useState } from 'react';
 
+// Obfuscate email to protect from spam bots
+const getEmailParts = () => {
+  const user = 'stealinglight';
+  const domain = 'gmail.com';
+  return { user, domain, full: `${user}@${domain}` };
+};
+
 export function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   });
-
-  // Obfuscate email to protect from spam bots
-  const getEmailParts = () => {
-    const user = 'stealinglight';
-    const domain = 'gmail.com';
-    return { user, domain, full: `${user}@${domain}` };
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,11 +46,6 @@ export function ContactSection() {
               <a
                 href={`mailto:${getEmailParts().full}`}
                 className="text-gray-300 hover:text-[#00ff41] transition-colors font-mono"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const email = getEmailParts();
-                  window.location.href = `mailto:${email.full}`;
-                }}
               >
                 {getEmailParts().user}@{getEmailParts().domain}
               </a>

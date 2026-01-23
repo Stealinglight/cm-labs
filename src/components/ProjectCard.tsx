@@ -2,6 +2,7 @@ import { Github, ExternalLink, ArrowRight } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { ArchitectureDiagram } from './ArchitectureDiagram';
 import { AcronymTooltip } from './AcronymTooltip';
+import { createScrollHandler } from '../utils/navigation';
 import type { Project } from '../data/projects';
 import { acronyms } from '../data/acronyms';
 import { cn } from './ui/utils';
@@ -44,21 +45,13 @@ function ProjectBadge({ type }: { type: 'featured' | 'open-source' }) {
 }
 
 function CategoryTags({ categories }: { categories: string[] }) {
-  const scrollToSkills = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const element = document.getElementById('skills');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <div className="flex flex-wrap gap-2 mb-6">
       {categories.map((category) => (
         <a
           key={category}
           href="#skills"
-          onClick={scrollToSkills}
+          onClick={createScrollHandler('skills')}
           className="px-3 py-1 bg-[#0a0a0a] border border-[#00ff41]/30 text-[#00ff41] text-xs font-mono hover:bg-[#00ff41]/10 hover:border-[#00ff41]/50 transition-colors cursor-pointer"
           title={`View related skills`}
         >
@@ -70,21 +63,13 @@ function CategoryTags({ categories }: { categories: string[] }) {
 }
 
 function HashtagList({ hashtags }: { hashtags: string[] }) {
-  const scrollToSkills = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const element = document.getElementById('skills');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <div className="flex flex-wrap gap-2 mb-8">
       {hashtags.map((tag) => (
         <a
           key={tag}
           href="#skills"
-          onClick={scrollToSkills}
+          onClick={createScrollHandler('skills')}
           className="font-mono text-xs text-[#00d9ff] hover:text-[#00ff41] transition-colors cursor-pointer"
           title={`View related skills`}
         >

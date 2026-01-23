@@ -1,4 +1,5 @@
 import { ExternalLink, Github, Linkedin, Mail } from 'lucide-react';
+import { scrollToSection } from '../utils/navigation';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -25,13 +26,6 @@ export function Footer() {
       label: 'Send an email',
     },
   ];
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId.toLowerCase());
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <footer className="bg-[#0a0a0a] border-t border-white/10 py-12 px-6">
@@ -64,7 +58,7 @@ export function Footer() {
             {navLinks.map((link) => (
               <button
                 key={link}
-                onClick={() => scrollToSection(link)}
+                onClick={() => scrollToSection(link.toLowerCase())}
                 className="text-sm text-gray-400 hover:text-[#00d9ff] transition-colors"
               >
                 {link}

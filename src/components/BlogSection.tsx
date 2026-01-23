@@ -1,4 +1,5 @@
 import { Mail, ArrowRight } from 'lucide-react';
+import { createScrollHandler } from '../utils/navigation';
 
 export function BlogSection() {
   const plannedTopics = [
@@ -28,7 +29,7 @@ export function BlogSection() {
             In the meantime, explore my{' '}
             <a
               href="#projects"
-              onClick={(e) => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }); }}
+              onClick={createScrollHandler('projects')}
               className="text-[#00d9ff] hover:text-[#00ff41] transition-colors"
             >
               featured projects

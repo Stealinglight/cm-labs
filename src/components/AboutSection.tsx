@@ -1,4 +1,5 @@
 import { MapPin, ExternalLink, GraduationCap } from 'lucide-react';
+import { createScrollHandler } from '../utils/navigation';
 
 export function AboutSection() {
   return (
@@ -21,14 +22,14 @@ export function AboutSection() {
               <p>
                 With nearly 4 years at AWS, I've progressed from SOC operations through cloud security response
                 to my current focus on AI-driven security systems. My work involves{' '}
-                <a href="#skills" onClick={(e) => { e.preventDefault(); document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-[#00d9ff] hover:text-[#00ff41] transition-colors">multi-agent architectures</a>,{' '}
-                <a href="#skills" onClick={(e) => { e.preventDefault(); document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-[#00d9ff] hover:text-[#00ff41] transition-colors">LLM integration</a> for validation processes, and automated compliance frameworks.
+                <a href="#skills" onClick={createScrollHandler('skills')} className="text-[#00d9ff] hover:text-[#00ff41] transition-colors">multi-agent architectures</a>,{' '}
+                <a href="#skills" onClick={createScrollHandler('skills')} className="text-[#00d9ff] hover:text-[#00ff41] transition-colors">LLM integration</a> for validation processes, and automated compliance frameworks.
               </p>
               <p>
                 My background combines creative problem-solving from 8 years in film production (managing
                 30+ person crews under pressure across Asia) with hardcore technical security engineering -
                 giving me a unique perspective on coordinating complex distributed systems. See my{' '}
-                <a href="#projects" onClick={(e) => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-[#00d9ff] hover:text-[#00ff41] transition-colors">featured projects</a> for examples.
+                <a href="#projects" onClick={createScrollHandler('projects')} className="text-[#00d9ff] hover:text-[#00ff41] transition-colors">featured projects</a> for examples.
               </p>
               <div className="pt-4 border-t border-white/10">
                 <p className="text-sm text-gray-500">

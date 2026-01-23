@@ -1,5 +1,5 @@
 import { App, Stack } from 'aws-cdk-lib';
-import { Annotations as AnnotationsCapture } from 'aws-cdk-lib/assertions';
+import { Annotations, Match } from 'aws-cdk-lib/assertions';
 import { TagComplianceAspect } from '../lib/aspects/tag-compliance-aspect';
 
 describe('TagComplianceAspect', () => {
@@ -16,10 +16,8 @@ describe('TagComplianceAspect', () => {
     const aspect = new TagComplianceAspect(['Project', 'Environment', 'ManagedBy']);
     aspect.visit(stack);
 
-    const warnings = AnnotationsCapture.fromStack(stack).findWarning(
-      '*',
-      'Stack is missing required tags*'
-    );
+    const annotations = Annotations.fromStack(stack);
+    const warnings = annotations.findWarning('*', Match.stringLikeRegexp('Stack is missing required tags'));
     expect(warnings.length).toBe(0);
   });
 
@@ -34,11 +32,8 @@ describe('TagComplianceAspect', () => {
     const aspect = new TagComplianceAspect(['Project', 'Environment', 'ManagedBy']);
     aspect.visit(stack);
 
-    const warnings = AnnotationsCapture.fromStack(stack).findWarning(
-      '*',
-      'Stack is missing required tags: Environment, ManagedBy*'
-    );
-    expect(warnings.length).toBeGreaterThan(0);
+    const annotations = Annotations.fromStack(stack);
+    annotations.hasWarning('*', Match.stringLikeRegexp('Stack is missing required tags.*Environment.*ManagedBy'));
   });
 
   it('should warn when tag values are empty', () => {
@@ -53,11 +48,8 @@ describe('TagComplianceAspect', () => {
     const aspect = new TagComplianceAspect(['Project', 'Environment']);
     aspect.visit(stack);
 
-    const warnings = AnnotationsCapture.fromStack(stack).findWarning(
-      '*',
-      "Tag 'Project' has an empty value*"
-    );
-    expect(warnings.length).toBeGreaterThan(0);
+    const annotations = Annotations.fromStack(stack);
+    annotations.hasWarning('*', Match.stringLikeRegexp("Tag 'Project' has an empty value"));
   });
 
   it('should allow custom required tags', () => {
@@ -72,10 +64,8 @@ describe('TagComplianceAspect', () => {
     const aspect = new TagComplianceAspect(['CustomTag1', 'CustomTag2']);
     aspect.visit(stack);
 
-    const warnings = AnnotationsCapture.fromStack(stack).findWarning(
-      '*',
-      'Stack is missing required tags*'
-    );
+    const annotations = Annotations.fromStack(stack);
+    const warnings = annotations.findWarning('*', Match.stringLikeRegexp('Stack is missing required tags'));
     expect(warnings.length).toBe(0);
   });
 });

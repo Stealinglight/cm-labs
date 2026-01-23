@@ -33,7 +33,11 @@ export function Footer() {
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Left - Name, title, and social links */}
           <div>
-            <a href="/" className="font-mono text-[#00ff41] mb-2 block hover:text-[#00d9ff] transition-colors">CM</a>
+            <a
+              href="#"
+              onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              className="font-mono text-[#00ff41] mb-2 block hover:text-[#00d9ff] transition-colors"
+            >CM</a>
             <p className="text-gray-400 mb-4">Security AI Engineer</p>
             {/* Social Links */}
             <div className="flex gap-4">

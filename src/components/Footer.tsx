@@ -12,18 +12,21 @@ export function Footer() {
       url: 'https://github.com/Stealinglight',
       icon: Github,
       label: 'View GitHub profile',
+      external: true,
     },
     {
       name: 'LinkedIn',
       url: 'https://www.linkedin.com/in/cmcmillon',
       icon: Linkedin,
       label: 'Connect on LinkedIn',
+      external: true,
     },
     {
       name: 'Email',
-      url: 'mailto:stealinglight@gmail.com',
+      url: '#contact',
       icon: Mail,
-      label: 'Send an email',
+      label: 'Go to contact section',
+      external: false,
     },
   ];
 
@@ -45,8 +48,12 @@ export function Footer() {
                 <a
                   key={social.name}
                   href={social.url}
-                  target={social.url.startsWith('mailto:') ? undefined : '_blank'}
-                  rel={social.url.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                  target={social.external ? '_blank' : undefined}
+                  rel={social.external ? 'noopener noreferrer' : undefined}
+                  onClick={!social.external ? (e) => {
+                    e.preventDefault();
+                    scrollToSection('contact');
+                  } : undefined}
                   aria-label={social.label}
                   title={social.label}
                   className="text-gray-400 hover:text-[#00d9ff] transition-colors"

@@ -1,3 +1,5 @@
+import type { MouseEvent } from 'react';
+
 /**
  * Scrolls to a section by ID with smooth behavior
  * @param sectionId - The ID of the section to scroll to (without the # prefix)
@@ -14,7 +16,7 @@ export function scrollToSection(sectionId: string): void {
  * @param sectionId - The ID of the section to scroll to (without the # prefix)
  */
 export function createScrollHandler(sectionId: string) {
-  return (e: React.MouseEvent) => {
+  return (e: MouseEvent) => {
     e.preventDefault();
     scrollToSection(sectionId);
   };

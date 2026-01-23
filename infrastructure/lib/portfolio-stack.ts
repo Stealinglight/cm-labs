@@ -122,9 +122,7 @@ export class PortfolioStack extends Stack {
               // Display versions for debugging
               'echo "Node version:" && node --version',
               'echo "NPM version:" && npm --version',
-              // Generate package-lock.json if it doesn't exist (for Bun-based local dev)
-              'test -f package-lock.json || npm install --package-lock-only',
-              // Install dependencies with error handling
+              // Install dependencies with error handling (package-lock.json is committed for Amplify)
               'echo "Installing dependencies..." && npm ci || (echo "npm ci failed" && exit 1)',
               // Run tests - fail the build if tests fail
               'echo "Running tests..." && npm run test -- --run || (echo "Tests failed" && exit 1)',

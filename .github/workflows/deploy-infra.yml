@@ -36,7 +36,7 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GitHubActionRole
           role-session-name: github-actions-deploy-infra
-          aws-region: us-west-2
+          aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Deploy CDK stack
         working-directory: infrastructure

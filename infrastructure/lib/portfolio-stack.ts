@@ -166,6 +166,7 @@ export class PortfolioStack extends Stack {
     });
 
     domain.mapRoot(mainBranch);
+    domain.mapSubDomain(mainBranch, 'www');
 
     new CfnOutput(this, 'CustomDomainUrl', {
       value: `https://${this.customDomain}`,

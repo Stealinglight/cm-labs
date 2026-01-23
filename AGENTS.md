@@ -10,7 +10,7 @@ A technical portfolio website built with React, TypeScript, and Vite. The site i
 
 - `bun install` - Install dependencies (use `npm i` for infrastructure/)
 - `bun run dev` - Start Vite dev server at http://localhost:3000 (opens automatically with hot reload)
-- `bun run build` - Create production build in `build/` directory
+- `bun run build` - Create production build in `dist/` directory
 - `bun run test` - Run Vitest test runner in watch mode
 
 ## Architecture

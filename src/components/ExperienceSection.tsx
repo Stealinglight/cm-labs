@@ -1,5 +1,6 @@
 import { Briefcase, Calendar, TrendingUp } from 'lucide-react';
 import { AcronymTooltip } from './AcronymTooltip';
+import { createScrollHandler } from '../utils/navigation';
 import type { ReactNode } from 'react';
 
 // Helper to render text with acronym tooltips
@@ -140,7 +141,15 @@ export function ExperienceSection() {
 
         <p className="text-gray-400 mb-12 max-w-3xl">
           <TrendingUp className="w-4 h-4 inline mr-2 text-[#00d9ff]" />
-          Career progression: SOC Analyst → Cloud Security Response → AI Security Engineering
+          Career progression: SOC Analyst → Cloud Security Response → AI Security Engineering.{' '}
+          <a
+            href="#projects"
+            onClick={createScrollHandler('projects')}
+            className="text-[#00d9ff] hover:text-[#00ff41] transition-colors"
+          >
+            See my projects
+          </a>{' '}
+          for examples of my work.
         </p>
 
         <div className="space-y-12">

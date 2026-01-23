@@ -1,4 +1,5 @@
 import { Mail, ArrowRight } from 'lucide-react';
+import { createScrollHandler } from '../utils/navigation';
 
 export function BlogSection() {
   const plannedTopics = [
@@ -23,8 +24,17 @@ export function BlogSection() {
           </p>
 
           <p className="text-gray-400 leading-relaxed mb-12">
-            Coming soon: Deep dives into agentic AI architecture patterns, prompt engineering 
+            Coming soon: Deep dives into agentic AI architecture patterns, prompt engineering
             for security analysis, and building production security automation systems.
+            In the meantime, explore my{' '}
+            <a
+              href="#projects"
+              onClick={createScrollHandler('projects')}
+              className="text-[#00d9ff] hover:text-[#00ff41] transition-colors"
+            >
+              featured projects
+            </a>{' '}
+            to see these concepts in action.
           </p>
 
           <div className="mb-12">

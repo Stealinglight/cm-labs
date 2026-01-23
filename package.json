@@ -62,7 +62,8 @@
   },
   "scripts": {
       "dev": "vite",
-      "build": "vite build",
+      "build": "node scripts/generate-sitemap.js && vite build",
+    "build:sitemap": "node scripts/generate-sitemap.js",
       "test": "vitest",
       "sync-locks": "npm install --package-lock-only"
   }

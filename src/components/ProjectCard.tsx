@@ -2,6 +2,7 @@ import { Github, ExternalLink, ArrowRight } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { ArchitectureDiagram } from './ArchitectureDiagram';
 import { AcronymTooltip } from './AcronymTooltip';
+import { createScrollHandler } from '../utils/navigation';
 import type { Project } from '../data/projects';
 import { acronyms } from '../data/acronyms';
 import { cn } from './ui/utils';
@@ -47,12 +48,15 @@ function CategoryTags({ categories }: { categories: string[] }) {
   return (
     <div className="flex flex-wrap gap-2 mb-6">
       {categories.map((category) => (
-        <span
+        <a
           key={category}
-          className="px-3 py-1 bg-[#0a0a0a] border border-[#00ff41]/30 text-[#00ff41] text-xs font-mono"
+          href="#skills"
+          onClick={createScrollHandler('skills')}
+          className="px-3 py-1 bg-[#0a0a0a] border border-[#00ff41]/30 text-[#00ff41] text-xs font-mono hover:bg-[#00ff41]/10 hover:border-[#00ff41]/50 transition-colors cursor-pointer"
+          title="View related skills"
         >
           {category}
-        </span>
+        </a>
       ))}
     </div>
   );
@@ -62,9 +66,15 @@ function HashtagList({ hashtags }: { hashtags: string[] }) {
   return (
     <div className="flex flex-wrap gap-2 mb-8">
       {hashtags.map((tag) => (
-        <span key={tag} className="font-mono text-xs text-[#00d9ff]">
+        <a
+          key={tag}
+          href="#skills"
+          onClick={createScrollHandler('skills')}
+          className="font-mono text-xs text-[#00d9ff] hover:text-[#00ff41] transition-colors cursor-pointer"
+          title="View related skills"
+        >
           {tag}
-        </span>
+        </a>
       ))}
     </div>
   );

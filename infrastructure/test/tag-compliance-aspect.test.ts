@@ -1,4 +1,4 @@
-import { App, Stack, Annotations } from 'aws-cdk-lib';
+import { App, Stack } from 'aws-cdk-lib';
 import { Annotations as AnnotationsCapture } from 'aws-cdk-lib/assertions';
 import { TagComplianceAspect } from '../lib/aspects/tag-compliance-aspect';
 

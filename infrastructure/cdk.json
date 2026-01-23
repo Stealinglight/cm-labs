@@ -21,6 +21,7 @@
     "githubOwner": "Stealinglight",
     "githubRepository": "cm-labs",
     "branchName": "main",
+    "customDomain": "cm-sec.ai",
     "@aws-cdk/aws-lambda:recognizeLayerVersion": true,
     "@aws-cdk/core:checkSecretUsage": true,
     "@aws-cdk/core:target-partitions": [

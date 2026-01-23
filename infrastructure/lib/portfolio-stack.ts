@@ -159,10 +159,10 @@ export class PortfolioStack extends Stack {
     if (!this.customDomain) return;
 
     const domain = app.addDomain(this.customDomain, {
-      // Enable auto-subdomain for preview branches (e.g., feature-new-ui.stealinglight.hk)
+      // Enable auto-subdomain for preview branches (e.g., feature-new-ui.cm-sec.ai)
       enableAutoSubdomain: true,
       // Patterns for auto-subdomain creation matching autoBranchCreation patterns
-      autoSubDomainCreationPatterns: ['feature/*', 'feat/*', 'fix/*', 'bugfix/*', 'hotfix/*'],
+      autoSubdomainCreationPatterns: ['feature/*', 'feat/*', 'fix/*', 'bugfix/*', 'hotfix/*'],
     });
 
     domain.mapRoot(mainBranch);

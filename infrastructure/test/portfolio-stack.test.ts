@@ -86,7 +86,7 @@ describe('PortfolioStack', () => {
       expect(amplifyApp).toBeDefined();
       expect(amplifyApp?.Properties?.BuildSpec).toContain('npm ci');
       expect(amplifyApp?.Properties?.BuildSpec).toContain('npm run build');
-      expect(amplifyApp?.Properties?.BuildSpec).toContain('baseDirectory: build');
+      expect(amplifyApp?.Properties?.BuildSpec).toContain('baseDirectory: dist');
     });
 
     it('sets Node 20 environment variable', () => {

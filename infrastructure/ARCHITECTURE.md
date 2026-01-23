@@ -118,7 +118,7 @@ graph TB
 **Environment**:
 - Node.js 20.x runtime
 - Build caching enabled for `node_modules/`
-- Build output directory: `build/`
+- Build output directory: `dist/`
 
 **Single-Page Application Support**:
 - Custom rewrite rule: `/<*>` → `/index.html` (404-200)

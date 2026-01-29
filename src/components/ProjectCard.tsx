@@ -5,7 +5,6 @@ import { AcronymTooltip } from './AcronymTooltip';
 import { createScrollHandler } from '../utils/navigation';
 import type { Project } from '../data/projects';
 import { acronyms } from '../data/acronyms';
-import { cn } from './ui/utils';
 
 // Pre-compile regex pattern at module level for performance
 const acronymKeys = Object.keys(acronyms);

@@ -24,6 +24,8 @@ npm-debug.log*
 
 # Testing
 coverage/
+playwright-report/
+test-results/
 
 # Infrastructure CDK artifacts
 infrastructure/*.js

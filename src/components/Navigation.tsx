@@ -69,10 +69,15 @@ export function Navigation({ activeSection }: NavigationProps) {
                 )}
               </button>
             ))}
-            <button className="flex items-center gap-2 px-4 py-2 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all">
+            <a
+              href="/Chris_McMillon_Resume_AI_Security.pdf"
+              download="Chris_McMillon_Resume_AI_Security.pdf"
+              className="flex items-center gap-2 px-4 py-2 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all"
+              aria-label="Download Chris McMillon's resume as PDF"
+            >
               <Download className="w-4 h-4" />
               <span className="text-sm">Download CV</span>
-            </button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -101,10 +106,15 @@ export function Navigation({ activeSection }: NavigationProps) {
                   {item.label}
                 </button>
               ))}
-              <button className="flex items-center gap-2 px-4 py-2 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all w-full justify-center">
+              <a
+                href="/Chris_McMillon_Resume_AI_Security.pdf"
+                download="Chris_McMillon_Resume_AI_Security.pdf"
+                className="flex items-center gap-2 px-4 py-2 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all w-full justify-center"
+                aria-label="Download Chris McMillon's resume as PDF"
+              >
                 <Download className="w-4 h-4" />
                 <span className="text-sm">Download CV</span>
-              </button>
+              </a>
             </div>
           </div>
         )}

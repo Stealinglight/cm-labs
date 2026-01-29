@@ -71,7 +71,7 @@ export function Navigation({ activeSection }: NavigationProps) {
             ))}
             <a
               href="/Chris_McMillon_Resume_AI_Security.pdf"
-              download
+              download="Chris_McMillon_Resume_AI_Security.pdf"
               className="flex items-center gap-2 px-4 py-2 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all"
             >
               <Download className="w-4 h-4" />

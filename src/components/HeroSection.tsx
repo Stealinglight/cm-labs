@@ -87,9 +87,13 @@ export function HeroSection() {
           >
             View Projects
           </button>
-          <button className="px-8 py-3 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all uppercase tracking-wider">
+          <a
+            href="/Chris_McMillon_Resume_AI_Security.pdf"
+            download
+            className="px-8 py-3 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all uppercase tracking-wider"
+          >
             Download CV
-          </button>
+          </a>
           <button
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             className="px-8 py-3 border border-white/20 text-white hover:border-white/40 transition-all uppercase tracking-wider"

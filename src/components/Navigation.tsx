@@ -69,10 +69,14 @@ export function Navigation({ activeSection }: NavigationProps) {
                 )}
               </button>
             ))}
-            <button className="flex items-center gap-2 px-4 py-2 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all">
+            <a
+              href="/Chris_McMillon_Resume_AI_Security.pdf"
+              download
+              className="flex items-center gap-2 px-4 py-2 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all"
+            >
               <Download className="w-4 h-4" />
               <span className="text-sm">Download CV</span>
-            </button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -101,10 +105,14 @@ export function Navigation({ activeSection }: NavigationProps) {
                   {item.label}
                 </button>
               ))}
-              <button className="flex items-center gap-2 px-4 py-2 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all w-full justify-center">
+              <a
+                href="/Chris_McMillon_Resume_AI_Security.pdf"
+                download
+                className="flex items-center gap-2 px-4 py-2 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all w-full justify-center"
+              >
                 <Download className="w-4 h-4" />
                 <span className="text-sm">Download CV</span>
-              </button>
+              </a>
             </div>
           </div>
         )}

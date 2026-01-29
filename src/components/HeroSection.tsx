@@ -89,7 +89,7 @@ export function HeroSection() {
           </button>
           <a
             href="/Chris_McMillon_Resume_AI_Security.pdf"
-            download
+            download="Chris_McMillon_Resume_AI_Security.pdf"
             className="px-8 py-3 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all uppercase tracking-wider"
             aria-label="Download Chris McMillon's resume as PDF"
           >

@@ -1,6 +1,9 @@
 import { test, expect } from '@playwright/test';
 
+// Skip visual tests in CI - font rendering differs between macOS and Linux
+// Run locally with: npm run test:e2e
 test.describe('Visual Regression Tests', () => {
+  test.skip(({ }, testInfo) => !!process.env.CI, 'Visual tests skipped in CI due to cross-platform rendering differences');
   test.describe('Desktop', () => {
     test.use({ viewport: { width: 1280, height: 720 } });
 

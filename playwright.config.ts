@@ -8,9 +8,12 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: process.env.CI ? 'github' : 'html',
 
+  // Use platform-agnostic snapshot names
+  snapshotPathTemplate: '{testDir}/{testFileDir}/__screenshots__/{testFilePath}/{arg}{ext}',
+
   expect: {
     toHaveScreenshot: {
-      maxDiffPixelRatio: 0.001, // 0.1% threshold
+      maxDiffPixelRatio: 0.01, // 1% threshold to handle cross-platform rendering differences
     },
   },
 

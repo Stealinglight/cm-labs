@@ -70,3 +70,34 @@ jobs:
             playwright-report/
             test-results/
           retention-days: 7
+
+  sitemap:
+    name: Update Sitemap
+    runs-on: ubuntu-latest
+    needs: [security, test]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate sitemap
+        run: npm run build:sitemap
+
+      - name: Commit sitemap if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/sitemap.xml
+          git diff --staged --quiet || git commit -m "chore: update sitemap [skip ci]"
+          git push

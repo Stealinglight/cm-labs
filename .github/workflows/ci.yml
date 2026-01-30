@@ -97,9 +97,26 @@ jobs:
       - name: Generate sitemap
         run: npm run build:sitemap
 
-      - name: Commit sitemap if changed
+      - name: Check for sitemap changes
+        id: check_changes
+        run: |
+          git add public/sitemap.xml
+          if git diff --staged --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit sitemap changes
+        if: steps.check_changes.outputs.changed == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/sitemap.xml
-          git diff --staged --quiet || (git commit -m "chore: update sitemap [skip ci]" && git push)
+          git commit -m "chore: update sitemap [skip ci]"
+
+      - name: Push sitemap changes
+        if: steps.check_changes.outputs.changed == 'true'
+        uses: ad-m/github-push-action@v0.8.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}

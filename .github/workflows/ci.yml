@@ -75,6 +75,9 @@ jobs:
     name: Update Sitemap
     runs-on: ubuntu-latest
     needs: [security, test]
+    concurrency:
+      group: sitemap-update
+      cancel-in-progress: false
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     permissions:
       contents: write

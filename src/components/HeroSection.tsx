@@ -92,7 +92,7 @@ export function HeroSection() {
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-3 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all uppercase tracking-wider"
-            aria-label="Download Chris McMillon's resume as PDF"
+            aria-label="View Chris McMillon's resume as PDF (opens in new tab)"
           >
             Download CV
           </a>

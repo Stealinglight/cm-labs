@@ -71,7 +71,7 @@ test.describe('Smoke Tests', () => {
 
     // Verify new tab attributes are set correctly
     const rel = await cvLink.getAttribute('rel');
-    expect(rel).toContain('noopener');
+    expect(rel).toBe('noopener noreferrer');
 
     // Verify PDF is accessible
     const response = await request.get(href!);

@@ -137,7 +137,7 @@ The project uses `eslint-plugin-security` with the following enforced rules:
 | `security/detect-object-injection` | Prevent object injection attacks |
 | `security/detect-non-literal-regexp` | Prevent ReDoS attacks |
 | `security/detect-unsafe-regex` | Detect vulnerable regex patterns |
-| `security/detect-buffer-buffer-allocation` | Prevent buffer overflow |
+| `security/detect-buffer-noassert` | Prevent unsafe Buffer usage without assertions |
 | `security/detect-eval-with-expression` | Block dynamic eval |
 | `security/detect-no-csrf-before-method-override` | CSRF protection |
 | `security/detect-possible-timing-attacks` | Timing attack prevention |

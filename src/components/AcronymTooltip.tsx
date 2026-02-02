@@ -8,6 +8,7 @@ interface AcronymTooltipProps {
 }
 
 export function AcronymTooltip({ acronym, className }: AcronymTooltipProps) {
+  // eslint-disable-next-line security/detect-object-injection -- safe: acronym is from internal data, not user input
   const def = acronyms[acronym];
 
   if (!def) {

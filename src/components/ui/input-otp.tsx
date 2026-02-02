@@ -44,6 +44,7 @@ function InputOTPSlot({
   index: number;
 }) {
   const inputOTPContext = React.useContext(OTPInputContext);
+  // eslint-disable-next-line security/detect-object-injection -- safe: index is typed as number, accessing array slot
   const { char, hasFakeCaret, isActive } = inputOTPContext?.slots[index] ?? {};
 
   return (

@@ -46,7 +46,8 @@ jobs:
 
       - name: Run actionlint
         run: |
-          bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+          ACTIONLINT_VERSION=1.7.1
+          bash <(curl -sSf https://raw.githubusercontent.com/rhysd/actionlint/v${ACTIONLINT_VERSION}/scripts/download-actionlint.bash) "${ACTIONLINT_VERSION}"
           ./actionlint .github/workflows/
 
   test:

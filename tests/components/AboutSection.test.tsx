@@ -47,7 +47,8 @@ describe('AboutSection', () => {
     ];
 
     focusAreas.forEach((area) => {
-      expect(screen.getByText(area)).toBeInTheDocument();
+      // Use getAllByText since some focus areas may appear multiple times on the page
+      expect(screen.getAllByText(area).length).toBeGreaterThan(0);
     });
   });
 

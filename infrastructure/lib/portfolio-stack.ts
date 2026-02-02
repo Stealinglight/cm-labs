@@ -98,6 +98,7 @@ export class PortfolioStack extends Stack {
       },
       autoBranchDeletion: true,
       buildSpec: this.getBuildSpec(),
+      customResponseHeaders: this.getSecurityHeaders(),
       environmentVariables: {
         // _LIVE_UPDATES: Tells Amplify to use specific Node.js version
         // This ensures builds use Node 20.x instead of the default version
@@ -110,6 +111,44 @@ export class PortfolioStack extends Stack {
         ]),
       },
     });
+  }
+
+  /**
+   * Security headers to protect against common web vulnerabilities.
+   * Applied to all paths via the '**\/*' pattern.
+   *
+   * Headers configured:
+   * - Strict-Transport-Security: Forces HTTPS connections for 1 year
+   * - X-Frame-Options: Prevents clickjacking by denying iframe embedding
+   * - X-Content-Type-Options: Prevents MIME type sniffing attacks
+   * - Referrer-Policy: Controls referrer information sent with requests
+   * - Content-Security-Policy: Restricts resource loading to prevent XSS
+   *   - 'unsafe-inline' needed for Tailwind CSS and React inline scripts
+   *   - data: URIs allowed for base64 embedded fonts/images
+   * - Permissions-Policy: Restricts browser features (camera, mic, geolocation)
+   */
+  private getSecurityHeaders(): amplify.CustomResponseHeader[] {
+    return [
+      {
+        pattern: '**/*',
+        headers: {
+          'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
+          'X-Frame-Options': 'DENY',
+          'X-Content-Type-Options': 'nosniff',
+          'Referrer-Policy': 'strict-origin-when-cross-origin',
+          'Content-Security-Policy': [
+            "default-src 'self'",
+            "script-src 'self' 'unsafe-inline'",
+            "style-src 'self' 'unsafe-inline'",
+            "img-src 'self' data: https:",
+            "font-src 'self' data:",
+            "connect-src 'self'",
+            "frame-ancestors 'none'",
+          ].join('; '),
+          'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+        },
+      },
+    ];
   }
 
   private getBuildSpec(): BuildSpec {

@@ -1,0 +1,165 @@
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 72 files tracked by git with 74 Code rules:
+  Scanning 69 files with 74 ts rules.
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 0 (0 blocking)
+ • Rules run: 74
+ • Targets scanned: 69
+ • Parsed lines: ~99.9%
+ • Scan was limited to files tracked by git
+ • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
+Ran 74 rules on 69 files: 0 findings.
+(need more rules? `semgrep login` for additional free Semgrep Registry rules)
+
+
+A new version of Semgrep is available. See https://semgrep.dev/docs/upgrading
+If Semgrep missed a finding, please send us feedback to let us know!
+See https://semgrep.dev/docs/reporting-false-negatives/
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 72 files tracked by git with 225 Code rules:
+                                                                                                                        
+  Language      Rules   Files          Origin      Rules                                                                
+ ─────────────────────────────        ───────────────────                                                               
+  <multilang>       2      72          Community     225                                                                
+  ts               20      69                                                                                           
+                                                                                                                        
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 0 (0 blocking)
+ • Rules run: 22
+ • Targets scanned: 72
+ • Parsed lines: ~99.9%
+ • Scan was limited to files tracked by git
+ • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
+Ran 22 rules on 72 files: 0 findings.
+(need more rules? `semgrep login` for additional free Semgrep Registry rules)
+
+
+A new version of Semgrep is available. See https://semgrep.dev/docs/upgrading
+If Semgrep missed a finding, please send us feedback to let us know!
+See https://semgrep.dev/docs/reporting-false-negatives/
+
+
+=== Additional Security Scans ===
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 72 files tracked by git with 543 Code rules:
+                                                                                                                        
+  Language      Rules   Files          Origin      Rules                                                                
+ ─────────────────────────────        ───────────────────                                                               
+  <multilang>       5      72          Community     543                                                                
+  ts               71      69                                                                                           
+                                                                                                                        
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 0 (0 blocking)
+ • Rules run: 76
+ • Targets scanned: 72
+ • Parsed lines: ~99.9%
+ • Scan was limited to files tracked by git
+ • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
+Ran 76 rules on 72 files: 0 findings.
+(need more rules? `semgrep login` for additional free Semgrep Registry rules)
+
+
+A new version of Semgrep is available. See https://semgrep.dev/docs/upgrading
+If Semgrep missed a finding, please send us feedback to let us know!
+See https://semgrep.dev/docs/reporting-false-negatives/
+
+================================================================================
+                        SEMGREP ANALYSIS SUMMARY
+================================================================================
+Date: $(date +%Y-%m-%d)
+Project: cm-labs (React Portfolio Site)
+
+SCAN RESULTS
+--------------------------------------------------------------------------------
+
+1. React + TypeScript Rules (p/react, p/typescript)
+   - Rules Run: 74
+   - Files Scanned: 69
+   - Findings: 0
+
+2. Security Audit Rules (p/security-audit)
+   - Rules Run: 22
+   - Files Scanned: 72
+   - Findings: 0
+
+3. OWASP Top Ten Rules (p/owasp-top-ten)
+   - Rules Run: 76
+   - Files Scanned: 72
+   - Findings: 0
+
+TOTAL FINDINGS: 0
+
+SECURITY ASSESSMENT
+--------------------------------------------------------------------------------
+
+This clean result is expected for a static React portfolio site because:
+
+1. No User Input Processing
+   - No forms that accept user input
+   - No query parameter handling
+   - No URL path-based dynamic content
+
+2. No Backend Integration
+   - No API calls that could be vulnerable to injection
+   - No authentication/authorization code
+   - No session management
+
+3. No Dangerous React Patterns
+   - No dangerouslySetInnerHTML usage found
+   - No eval() or Function() calls
+   - No dynamic script injection
+
+4. Static Content Only
+   - All content is hardcoded/imported at build time
+   - No runtime content loading from external sources
+   - No dynamic imports of untrusted code
+
+REAL-WORLD IMPACT ASSESSMENT
+--------------------------------------------------------------------------------
+
+Risk Level: LOW
+
+This portfolio site has minimal attack surface because:
+- It's a purely presentational site with no user interaction
+- Content is bundled at build time (no runtime data fetching)
+- No sensitive data is processed or stored
+- No authentication or authorization mechanisms exist
+
+The main security considerations for this type of site are:
+1. Supply chain security (covered by npm audit, osv-scanner)
+2. CI/CD security (covered by actionlint, zizmor)
+3. Secret exposure (covered by gitleaks, trufflehog)
+
+CONCLUSION
+--------------------------------------------------------------------------------
+The codebase passes all semgrep security scans. This result aligns with the
+project's architecture as a static React site with no backend, no user input,
+and no authentication requirements.
+

@@ -9,6 +9,7 @@ import { acronyms } from '../data/acronyms';
 // Pre-compile regex pattern at module level for performance
 const acronymKeys = Object.keys(acronyms);
 const sortedKeys = acronymKeys.sort((a, b) => b.length - a.length);
+// eslint-disable-next-line security/detect-non-literal-regexp -- safe: pattern built from internal acronyms data, not user input
 const acronymPattern = new RegExp(
   `\\b(${sortedKeys.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})\\b`,
   'g'
@@ -19,6 +20,7 @@ function renderWithAcronyms(text: string): ReactNode {
   const parts = text.split(acronymPattern);
 
   return parts.map((part, index) => {
+    // eslint-disable-next-line security/detect-object-injection -- safe: part comes from internal acronym pattern split
     if (acronyms[part]) {
       // Use part + index for better key uniqueness
       return <AcronymTooltip key={`${part}-${index}`} acronym={part} />;

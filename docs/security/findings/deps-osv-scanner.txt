@@ -1,0 +1,15 @@
+Starting filesystem walk for root: /
+Scanned /Volumes/DataDeuce/Projects/cm-labs/.worktrees/security-audit/package-lock.json file and found 435 packages
+End status: 0 dirs visited, 1 inodes visited, 1 Extract calls, 3.99425ms elapsed, 3.994ms wall time
+Total 2 packages affected by 4 known vulnerabilities (0 Critical, 0 High, 2 Medium, 2 Low, 0 Unknown) from 1 ecosystem.
+4 vulnerabilities can be fixed.
+
+
++-------------------------------------+------+-----------+---------------+---------+---------------+-------------------+
+| OSV URL                             | CVSS | ECOSYSTEM | PACKAGE       | VERSION | FIXED VERSION | SOURCE            |
++-------------------------------------+------+-----------+---------------+---------+---------------+-------------------+
+| https://osv.dev/GHSA-67mh-4wv8-2f99 | 5.3  | npm       | esbuild (dev) | 0.21.5  | 0.25.0        | package-lock.json |
+| https://osv.dev/GHSA-93m4-6634-74q7 | 6.0  | npm       | vite (dev)    | 6.3.5   | 6.4.1         | package-lock.json |
+| https://osv.dev/GHSA-g4jq-h2w9-997c | 2.3  | npm       | vite (dev)    | 6.3.5   | 6.3.6         | package-lock.json |
+| https://osv.dev/GHSA-jqfw-vq24-v9c3 | 2.3  | npm       | vite (dev)    | 6.3.5   | 6.3.6         | package-lock.json |
++-------------------------------------+------+-----------+---------------+---------+---------------+-------------------+

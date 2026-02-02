@@ -1,0 +1,117 @@
+# actionlint Security Analysis Report
+# Generated: 2024-02-01
+# Tool: actionlint v1.7.10
+# Scope: .github/workflows/*.yml (4 workflow files)
+
+================================================================================
+RAW FINDINGS
+================================================================================
+
+.github/workflows/ci.yml:102:9: shellcheck reported issue in this script: SC2086:info:3:27: Double quote to prevent globbing and word splitting [shellcheck]
+    |
+102 |         run: |
+    |         ^~~~
+.github/workflows/ci.yml:102:9: shellcheck reported issue in this script: SC2086:info:5:26: Double quote to prevent globbing and word splitting [shellcheck]
+    |
+102 |         run: |
+    |         ^~~~
+
+================================================================================
+ANALYSIS SUMMARY
+================================================================================
+
+Total Findings: 2
+Workflows Scanned: 4
+  - ci.yml: 2 findings
+  - claude-code-review.yml: 0 findings
+  - claude.yml: 0 findings
+  - deploy-infra.yml: 0 findings
+
+================================================================================
+CATEGORIZED FINDINGS
+================================================================================
+
+## Finding #1 & #2 - ShellCheck SC2086 (Info)
+- File: .github/workflows/ci.yml
+- Lines: 105, 107 (within run block starting at line 102)
+- Severity: INFO (lowest)
+- Type: Shell script best practice
+
+### Code in Question:
+```yaml
+- name: Check for sitemap changes
+  id: check_changes
+  run: |
+    git add public/sitemap.xml
+    if git diff --staged --quiet; then
+      echo "changed=false" >> $GITHUB_OUTPUT    # SC2086 on line 105
+    else
+      echo "changed=true" >> $GITHUB_OUTPUT     # SC2086 on line 107
+    fi
+```
+
+### Description:
+ShellCheck suggests double-quoting `$GITHUB_OUTPUT` to prevent word splitting:
+- `echo "changed=false" >> "$GITHUB_OUTPUT"`
+- `echo "changed=true" >> "$GITHUB_OUTPUT"`
+
+### Security Impact Assessment: LOW
+- This is NOT a security vulnerability in this context
+- $GITHUB_OUTPUT is a GitHub-controlled path that does not contain spaces
+- The path is always set by the GitHub Actions runner to a safe value
+- No user-controlled input flows into this variable
+- Risk: Theoretical only; would fail safely if path had spaces
+
+### Recommendation: FIX (minor improvement)
+- Add double quotes around $GITHUB_OUTPUT for best practice
+- This makes the code more robust and silences the warning
+- Fix: `echo "changed=false" >> "$GITHUB_OUTPUT"`
+
+================================================================================
+SECURITY-RELEVANT OBSERVATIONS (not flagged by actionlint)
+================================================================================
+
+While actionlint found minimal issues, the following security observations were
+noted during manual review of the workflows:
+
+1. **ci.yml - Permissions**
+   - `sitemap` job has `contents: write` - appropriate for its function
+   - Other jobs inherit default permissions (could be tightened)
+
+2. **claude-code-review.yml - Permissions**
+   - Has `id-token: write` for OIDC - appropriate
+   - Uses custom GH_TOKEN secret (vs GITHUB_TOKEN)
+
+3. **claude.yml - Permissions**
+   - Has `contents: read`, `pull-requests: read`, `issues: read`, `id-token: write`
+   - All appropriately scoped for read-only operations
+
+4. **deploy-infra.yml - Permissions**
+   - Has `contents: read`, `id-token: write` - correctly scoped for AWS OIDC
+   - Uses AWS OIDC authentication (good practice vs long-lived keys)
+
+5. **Action Version Pinning**
+   - All actions use version tags (v4, v2, v1) not SHA pins
+   - Recommendation: Pin to SHAs for supply chain security
+
+================================================================================
+RECOMMENDED ACTIONS
+================================================================================
+
+PRIORITY 1 (Fix):
+[ ] Quote $GITHUB_OUTPUT in ci.yml lines 105/107 for shell best practice
+
+PRIORITY 2 (Consider):
+[ ] Add explicit permissions block to jobs that currently inherit defaults
+[ ] Pin all GitHub Actions to SHA commits instead of version tags
+[ ] Review if claude-code-review.yml needs `contents: write` permission
+
+================================================================================
+CONCLUSION
+================================================================================
+
+actionlint Result: PASS (no security-critical findings)
+
+The 2 findings are low-severity shellcheck recommendations for variable quoting.
+No command injection, expression injection, or permission issues were detected.
+The workflows follow generally good practices for GitHub Actions security.

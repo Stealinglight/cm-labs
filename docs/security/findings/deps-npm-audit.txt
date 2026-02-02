@@ -1,0 +1,230 @@
+================================================================================
+NPM AUDIT REPORT - Security Assessment
+================================================================================
+Generated: 2026-02-01
+Project: cm-labs (Technical Portfolio Website)
+Project Type: Static React Portfolio Site (Client-side only, no backend)
+================================================================================
+
+EXECUTIVE SUMMARY
+-----------------
+Total Vulnerabilities: 5
+  - Critical: 0
+  - High: 0
+  - Moderate: 5
+  - Low: 0
+  - Info: 0
+
+Exit Code (--audit-level=high): 0 (PASS - No high/critical vulnerabilities)
+
+================================================================================
+VULNERABILITY DETAILS
+================================================================================
+
+VULNERABILITY #1: esbuild (MODERATE)
+------------------------------------
+Package: esbuild <=0.24.2
+Advisory: GHSA-67mh-4wv8-2f99
+CWE: CWE-346 (Origin Validation Error)
+CVSS Score: 5.3 (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N)
+
+Title: esbuild enables any website to send any requests to the development
+       server and read the response
+
+Description: The esbuild development server may allow cross-origin requests
+to access local files during development.
+
+Affected Paths:
+  - node_modules/vite-node/node_modules/esbuild
+  - node_modules/vitest/node_modules/esbuild
+
+Impact Assessment for this Project: MINIMAL
+  - This vulnerability only affects the DEVELOPMENT server
+  - It requires user to visit a malicious website while dev server is running
+  - Does NOT affect production builds
+  - This is a static site with no sensitive server-side data
+  - Attack complexity is HIGH (requires specific conditions)
+
+Remediation: Accept - Development-only, no production impact
+
+--------------------------------------------------------------------------------
+
+VULNERABILITY #2: vite - Path Traversal (MODERATE)
+--------------------------------------------------
+Package: vite >=6.0.0 <=6.4.0
+Advisory: GHSA-93m4-6634-74q7
+CWE: CWE-22 (Path Traversal)
+
+Title: vite allows server.fs.deny bypass via backslash on Windows
+
+Description: On Windows systems, the server.fs.deny configuration can be
+bypassed using backslash characters.
+
+Impact Assessment for this Project: MINIMAL
+  - Only affects Windows development environments
+  - Only affects DEVELOPMENT server, not production
+  - macOS/Linux development environments are unaffected
+  - No server-side deployment in production
+
+Remediation: Accept - Development-only, platform-specific
+
+--------------------------------------------------------------------------------
+
+VULNERABILITY #3: vite - Public Directory Exposure (LOW/MODERATE)
+-----------------------------------------------------------------
+Package: vite >=6.0.0 <=6.3.5
+Advisory: GHSA-g4jq-h2w9-997c
+CWE: CWE-22, CWE-200, CWE-284
+
+Title: Vite middleware may serve files starting with the same name with the
+       public directory
+
+Impact Assessment for this Project: MINIMAL
+  - Development server only
+  - No sensitive files in public directory
+  - No production impact
+
+Remediation: Accept - Development-only
+
+--------------------------------------------------------------------------------
+
+VULNERABILITY #4: vite - HTML File Handling (LOW/MODERATE)
+----------------------------------------------------------
+Package: vite >=6.0.0 <=6.3.5
+Advisory: GHSA-jqfw-vq24-v9c3
+CWE: CWE-23, CWE-200, CWE-284
+
+Title: Vite's server.fs settings were not applied to HTML files
+
+Impact Assessment for this Project: MINIMAL
+  - Development server only
+  - No sensitive HTML files outside allowed directories
+  - No production impact
+
+Remediation: Accept - Development-only
+
+--------------------------------------------------------------------------------
+
+VULNERABILITY #5: Transitive Dependencies
+-----------------------------------------
+Packages: @vitest/mocker, vite-node, vitest
+
+These packages inherit vulnerabilities from vite and esbuild through the
+dependency chain. All have MODERATE severity ratings due to their dependencies.
+
+Impact Assessment for this Project: MINIMAL
+  - All are development/testing dependencies only
+  - Not included in production builds
+  - vitest and vite-node are test runners, not production code
+
+Remediation: Accept - Development-only
+
+================================================================================
+DEPENDENCY BREAKDOWN
+================================================================================
+Total Dependencies: 472
+  - Production: 145
+  - Development: 327
+  - Optional: 109
+  - Peer: 11
+
+All 5 vulnerabilities are in DEVELOPMENT dependencies or transitive
+dependencies of development tools (vite, vitest).
+
+================================================================================
+FIX AVAILABILITY
+================================================================================
+npm suggests: npm audit fix --force
+This would install: vitest@4.0.18 (SEMVER MAJOR breaking change)
+
+This fix is a major version upgrade that may introduce breaking changes to
+the test suite. Manual verification would be required.
+
+================================================================================
+RISK ASSESSMENT FOR THIS PROJECT
+================================================================================
+PROJECT CONTEXT:
+- Static React portfolio website
+- Client-side only (no backend/server)
+- No user authentication or sensitive data processing
+- No database connections
+- Production deployment is pre-built static files
+
+VULNERABILITY CONTEXT:
+- All vulnerabilities affect DEVELOPMENT tools only
+- None affect production runtime
+- None are present in the production build output
+- All require specific attack conditions (user visiting malicious sites
+  while development server is running)
+
+OVERALL RISK LEVEL: LOW
+
+================================================================================
+REMEDIATION PLAN
+================================================================================
+
+IMMEDIATE ACTIONS REQUIRED: None
+- No high or critical vulnerabilities
+- No production-impacting vulnerabilities
+
+RECOMMENDED FUTURE ACTIONS:
+1. Monitor for vite updates that patch these issues
+   - Current: vite@6.3.5
+   - Patched version needed: >6.4.0 (when available)
+
+2. Consider updating vitest when convenient
+   - Current: vitest@2.1.9
+   - Available: vitest@4.0.18 (major version, requires testing)
+   - Note: This is a breaking change upgrade
+
+3. Development Best Practices:
+   - Avoid visiting untrusted websites while dev server is running
+   - Use firewall to restrict dev server to localhost only
+   - Keep development environment isolated
+
+ACCEPTED VULNERABILITIES:
+- All 5 moderate vulnerabilities are ACCEPTED because:
+  1. They only affect development environment
+  2. They have no production impact
+  3. They require complex attack scenarios
+  4. This is a static site with no sensitive server-side operations
+
+================================================================================
+RAW NPM AUDIT OUTPUT
+================================================================================
+
+# npm audit report
+
+esbuild  <=0.24.2
+Severity: moderate
+esbuild enables any website to send any requests to the development server and read the response - https://github.com/advisories/GHSA-67mh-4wv8-2f99
+fix available via `npm audit fix --force`
+Will install vitest@4.0.18, which is a breaking change
+node_modules/vite-node/node_modules/esbuild
+node_modules/vitest/node_modules/esbuild
+  vite  0.11.0 - 6.4.0
+  Depends on vulnerable versions of esbuild
+  node_modules/vite
+  node_modules/vite-node/node_modules/vite
+  node_modules/vitest/node_modules/vite
+    @vitest/mocker  <=3.0.0-beta.4
+    Depends on vulnerable versions of vite
+    node_modules/vitest/node_modules/@vitest/mocker
+      vitest  0.0.1 - 0.0.12 || 0.0.29 - 0.0.122 || 0.3.3 - 3.0.0-beta.4
+      Depends on vulnerable versions of @vitest/mocker
+      Depends on vulnerable versions of vite
+      Depends on vulnerable versions of vite-node
+      node_modules/vitest
+    vite-node  <=2.2.0-beta.2
+    Depends on vulnerable versions of vite
+    node_modules/vite-node
+
+
+5 moderate severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+================================================================================
+END OF REPORT
+================================================================================

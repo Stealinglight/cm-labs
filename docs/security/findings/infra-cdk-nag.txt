@@ -1,0 +1,43 @@
+# cdk-nag Security Analysis Report
+# Generated: 2026-02-01
+# Infrastructure: AWS Amplify Portfolio Site
+# Check Type: AwsSolutionsChecks (verbose: true)
+
+## Summary
+The infrastructure passed all AWS Solutions security checks with no violations.
+
+## Detailed Results
+
+### AwsSolutions-IAM4: AWS Managed Policies Check
+- Resource: PortfolioInfrastructureStack/PortfolioApp/Role/Resource
+- Status: COMPLIANT
+- Description: The IAM user, role, or group uses AWS managed policies
+- Severity: Error
+- Result: No violations - role configuration is correct
+
+### AwsSolutions-IAM5: Wildcard Permissions Check
+- Resource: PortfolioInfrastructureStack/PortfolioApp/Role/Resource
+- Status: COMPLIANT
+- Description: The IAM entity contains wildcard permissions and does not have a cdk-nag rule suppression with evidence for those permission
+- Severity: Error
+- Result: No violations - no inappropriate wildcard permissions found
+
+## Infrastructure Components Analyzed
+1. AWS::IAM::Role - Amplify service role
+2. AWS::Amplify::App - Main application configuration
+3. AWS::Amplify::Branch - Main branch configuration
+4. AWS::Amplify::Domain - Custom domain (cm-sec.ai)
+
+## Security Best Practices Verified
+- IAM role uses principle of least privilege
+- No wildcard permissions in IAM policies
+- OAuth token retrieved securely from AWS Secrets Manager
+- Proper service role scoping for Amplify
+
+## Notes
+- cdk-nag version: ^2.37.55
+- AWS CDK version: ^2.176.0
+- Check ruleset: AwsSolutionsChecks (AWS Well-Architected Framework)
+
+## Raw CSV Report
+See: AwsSolutions-PortfolioInfrastructureStack-NagReport.csv

@@ -39,6 +39,16 @@ jobs:
       - name: Run npm audit
         run: npm audit --audit-level=high
 
+      - name: Run Semgrep
+        run: |
+          pip install semgrep
+          semgrep --config p/react --config p/typescript --error src/
+
+      - name: Run actionlint
+        run: |
+          bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+          ./actionlint .github/workflows/
+
   test:
     name: Build & Test
     runs-on: ubuntu-latest

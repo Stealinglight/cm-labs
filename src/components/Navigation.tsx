@@ -71,9 +71,10 @@ export function Navigation({ activeSection }: NavigationProps) {
             ))}
             <a
               href="/Chris_McMillon_Resume_AI_Security.pdf"
-              download="Chris_McMillon_Resume_AI_Security.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all"
-              aria-label="Download Chris McMillon's resume as PDF"
+              aria-label="View Chris McMillon's resume as PDF (opens in new tab)"
             >
               <Download className="w-4 h-4" />
               <span className="text-sm">Download CV</span>
@@ -108,9 +109,10 @@ export function Navigation({ activeSection }: NavigationProps) {
               ))}
               <a
                 href="/Chris_McMillon_Resume_AI_Security.pdf"
-                download="Chris_McMillon_Resume_AI_Security.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all w-full justify-center"
-                aria-label="Download Chris McMillon's resume as PDF"
+                aria-label="View Chris McMillon's resume as PDF (opens in new tab)"
               >
                 <Download className="w-4 h-4" />
                 <span className="text-sm">Download CV</span>

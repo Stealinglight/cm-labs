@@ -48,7 +48,7 @@ jobs:
         run: |
           ACTIONLINT_VERSION=1.7.1
           bash <(curl -sSf https://raw.githubusercontent.com/rhysd/actionlint/v${ACTIONLINT_VERSION}/scripts/download-actionlint.bash) "${ACTIONLINT_VERSION}"
-          ./actionlint .github/workflows/
+          ./actionlint
 
   test:
     name: Build & Test
@@ -122,9 +122,9 @@ jobs:
         run: |
           git add public/sitemap.xml
           if git diff --staged --quiet; then
-            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "changed=false" >> "$GITHUB_OUTPUT"
           else
-            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Commit sitemap changes

@@ -62,12 +62,16 @@ test.describe('Smoke Tests', () => {
 
     await page.goto('/');
 
-    // Find download link by href (in hero section)
-    const downloadLink = page.locator('a[href*="Resume"][download]').first();
-    await expect(downloadLink).toBeVisible();
+    // Find CV link by href (opens in new tab for mobile compatibility)
+    const cvLink = page.locator('a[href*="Resume"][target="_blank"]').first();
+    await expect(cvLink).toBeVisible();
 
-    const href = await downloadLink.getAttribute('href');
+    const href = await cvLink.getAttribute('href');
     expect(href).toBeTruthy();
+
+    // Verify new tab attributes are set correctly
+    const rel = await cvLink.getAttribute('rel');
+    expect(rel).toContain('noopener');
 
     // Verify PDF is accessible
     const response = await request.get(href!);

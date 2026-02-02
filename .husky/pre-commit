@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Run gitleaks on staged files
+echo "Running gitleaks..."
+gitleaks protect --staged --verbose
+if [ $? -ne 0 ]; then
+  echo "Gitleaks found secrets in staged files. Commit blocked."
+  exit 1
+fi
+
+# Run eslint on staged TypeScript files
+STAGED_TS=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(ts|tsx)$' | tr '\n' ' ')
+if [ -n "$STAGED_TS" ]; then
+  echo "Running ESLint on staged files..."
+  npx eslint $STAGED_TS
+  if [ $? -ne 0 ]; then
+    echo "ESLint found errors. Commit blocked."
+    exit 1
+  fi
+fi
+
+echo "Pre-commit checks passed!"

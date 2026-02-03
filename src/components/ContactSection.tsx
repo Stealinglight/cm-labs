@@ -1,5 +1,5 @@
 import { Github, Linkedin, MapPin, Send } from 'lucide-react';
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -8,7 +8,7 @@ export function ContactSection() {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     // Form submission logic would go here
     console.log('Form submitted:', formData);

@@ -48,8 +48,12 @@ const BASE_TITLE = 'Chris McMillon | AI Security Engineer & Security Consultant'
 const BASE_URL = 'https://cm-sec.ai';
 
 /**
- * SEOHead component for dynamic meta tag updates based on current section.
- * Uses native document API for React 19 compatibility.
+ * SEOHead component for meta tag management.
+ * Note: Dynamic meta tag updates based on scroll are primarily for user experience
+ * and won't affect SEO as search engine crawlers don't execute JavaScript or track scroll.
+ * For SEO purposes, the static meta tags in index.html are what matters.
+ * 
+ * This component could be enhanced with SSR/prerendering for better SEO support.
  */
 export function SEOHead({ section = 'hero' }: SEOHeadProps) {
   useEffect(() => {

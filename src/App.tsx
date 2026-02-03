@@ -6,15 +6,17 @@ import { SkillsSection } from './components/SkillsSection';
 import { ProjectsSection } from './components/ProjectsSection';
 import { BlogSection } from './components/BlogSection';
 import { ExperienceSection } from './components/ExperienceSection';
+import { FAQSection } from './components/FAQSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
+import { SEOHead } from './components/SEOHead';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'skills', 'projects', 'blog', 'experience', 'contact'];
+      const sections = ['hero', 'about', 'skills', 'projects', 'blog', 'experience', 'faq', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -35,6 +37,7 @@ export default function App() {
 
   return (
     <div className="bg-[#0a0a0a] text-white min-h-screen">
+      <SEOHead section={activeSection as 'hero' | 'about' | 'projects' | 'experience' | 'skills' | 'contact'} />
       <Navigation activeSection={activeSection} />
       <main>
         <HeroSection />
@@ -43,6 +46,7 @@ export default function App() {
         <ProjectsSection />
         <BlogSection />
         <ExperienceSection />
+        <FAQSection />
         <ContactSection />
       </main>
       <Footer />

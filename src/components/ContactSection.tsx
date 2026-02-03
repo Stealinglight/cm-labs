@@ -18,7 +18,7 @@ export function ContactSection() {
     <section id="contact" className="py-24 px-6 bg-[#0f0f0f] relative">
       <div className="max-w-6xl mx-auto">
         <div className="font-mono text-[#00ff41] text-sm mb-8">
-          <span className="opacity-50">06.</span> $ nano contact.txt
+          <span className="opacity-50">07.</span> $ nano contact.txt
         </div>
 
         <h2 className="text-3xl md:text-4xl mb-8 tracking-wide uppercase">Get in Touch</h2>

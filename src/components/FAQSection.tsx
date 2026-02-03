@@ -30,12 +30,18 @@ const faqs: FAQItem[] = [
 ];
 
 function FAQItemComponent({ item, isOpen, onToggle }: { item: FAQItem; isOpen: boolean; onToggle: () => void }) {
+  // Generate stable ID from question text
+  const panelId = `faq-panel-${item.question.replace(/\s+/g, '-').toLowerCase().replace(/[^\w-]/g, '')}`;
+  const buttonId = `faq-button-${item.question.replace(/\s+/g, '-').toLowerCase().replace(/[^\w-]/g, '')}`;
+
   return (
     <div className="border border-white/10 bg-[#1a1a1a]/50">
       <button
+        id={buttonId}
         onClick={onToggle}
         className="w-full p-6 text-left flex items-start justify-between gap-4 hover:bg-white/5 transition-colors"
         aria-expanded={isOpen}
+        aria-controls={panelId}
       >
         <span className="text-gray-200">{item.question}</span>
         <ChevronDown
@@ -43,7 +49,12 @@ function FAQItemComponent({ item, isOpen, onToggle }: { item: FAQItem; isOpen: b
         />
       </button>
       {isOpen && (
-        <div className="px-6 pb-6 text-gray-400 leading-relaxed border-t border-white/5 pt-4">
+        <div
+          id={panelId}
+          role="region"
+          aria-labelledby={buttonId}
+          className="px-6 pb-6 text-gray-400 leading-relaxed border-t border-white/5 pt-4"
+        >
           {item.answer}
         </div>
       )}
@@ -143,7 +154,7 @@ export function FAQSection() {
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <FAQItemComponent
-                key={index}
+                key={faq.question}
                 item={faq}
                 isOpen={openIndex === index}
                 onToggle={() => handleToggle(index)}

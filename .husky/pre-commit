@@ -1,11 +1,15 @@
 #!/bin/sh
 
 # Run gitleaks on staged files
-echo "Running gitleaks..."
-gitleaks protect --staged --verbose
-if [ $? -ne 0 ]; then
-  echo "Gitleaks found secrets in staged files. Commit blocked."
-  exit 1
+if command -v gitleaks >/dev/null 2>&1; then
+  echo "Running gitleaks..."
+  gitleaks protect --staged --verbose
+  if [ $? -ne 0 ]; then
+    echo "Gitleaks found secrets in staged files. Commit blocked."
+    exit 1
+  fi
+else
+  echo "Gitleaks not installed, skipping secret detection."
 fi
 
 # Run eslint on staged TypeScript files

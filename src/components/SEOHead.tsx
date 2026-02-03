@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface SEOHeadProps {
   section?: 'hero' | 'about' | 'projects' | 'experience' | 'skills' | 'contact' | 'blog' | 'faq';
@@ -59,6 +59,7 @@ export function SEOHead({ section = 'hero' }: SEOHeadProps) {
   useEffect(() => {
     // Safely access sectionMeta with validated key
     const validSection: keyof typeof sectionMeta = section in sectionMeta ? section : 'hero';
+    // Safe: validSection is validated above and explicitly typed as a key of sectionMeta
     // eslint-disable-next-line security/detect-object-injection
     const meta = sectionMeta[validSection];
     const newTitle = `${BASE_TITLE}${meta.titleSuffix}`;

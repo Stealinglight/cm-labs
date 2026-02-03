@@ -29,10 +29,18 @@ const faqs: FAQItem[] = [
   },
 ];
 
+/**
+ * Generate a stable ID from question text for ARIA attributes
+ */
+function generateQuestionId(question: string): string {
+  return question.replace(/\s+/g, '-').toLowerCase().replace(/[^\w-]/g, '');
+}
+
 function FAQItemComponent({ item, isOpen, onToggle }: { item: FAQItem; isOpen: boolean; onToggle: () => void }) {
-  // Generate stable ID from question text
-  const panelId = `faq-panel-${item.question.replace(/\s+/g, '-').toLowerCase().replace(/[^\w-]/g, '')}`;
-  const buttonId = `faq-button-${item.question.replace(/\s+/g, '-').toLowerCase().replace(/[^\w-]/g, '')}`;
+  // Generate stable IDs from question text
+  const questionId = generateQuestionId(item.question);
+  const panelId = `faq-panel-${questionId}`;
+  const buttonId = `faq-button-${questionId}`;
 
   return (
     <div className="border border-white/10 bg-[#1a1a1a]/50">

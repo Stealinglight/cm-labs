@@ -13,6 +13,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Performance hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
+    <!-- Mobile app meta tags -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="CM-SEC" />
+
     <!-- Primary Meta Tags -->
     <title>Chris McMillon | AI Security Engineer & Security Consultant - Seattle</title>
     <meta name="description" content="Chris McMillon is an AI Security Engineer at AWS specializing in multi-agent systems, security automation, and LLM integration. Building agentic AI solutions for compliance and threat analysis." />
@@ -33,16 +47,20 @@
     <meta property="og:url" content="https://cm-sec.ai/" />
     <meta property="og:title" content="Chris McMillon | AI Security Engineer & Security Consultant" />
     <meta property="og:description" content="AI Security Engineer at AWS specializing in multi-agent systems, security automation, and LLM integration. Building agentic AI solutions for compliance and threat analysis." />
-    <!-- TODO: Add og:image once public/og-image.png is created (recommended: 1200x630px) -->
+    <meta property="og:image" content="https://cm-sec.ai/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Chris McMillon - AI Security Engineer & Security Consultant" />
     <meta property="og:site_name" content="Chris McMillon Portfolio" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://cm-sec.ai/" />
     <meta name="twitter:title" content="Chris McMillon | AI Security Engineer & Security Consultant" />
     <meta name="twitter:description" content="AI Security Engineer at AWS specializing in multi-agent systems, security automation, and LLM integration. Building agentic AI solutions for compliance and threat analysis." />
-    <!-- TODO: Add twitter:image once public/og-image.png is created -->
+    <meta name="twitter:image" content="https://cm-sec.ai/og-image.png" />
+    <meta name="twitter:image:alt" content="Chris McMillon - AI Security Engineer & Security Consultant" />
 
     <!-- Additional SEO -->
     <meta name="geo.region" content="US-WA" />
@@ -87,7 +105,16 @@
         "Cloud Security",
         "Compliance Automation",
         "AWS",
-        "Agentic AI Systems"
+        "Agentic AI Systems",
+        "Prompt Engineering",
+        "LLM Orchestration",
+        "Compliance-as-Code",
+        "Security Copilots",
+        "AI Red Teaming",
+        "SOAR",
+        "Security Operations Automation",
+        "Threat Analysis",
+        "Security Architecture"
       ],
       "sameAs": [
         "https://github.com/Stealinglight",
@@ -105,6 +132,74 @@
       "url": "https://cm-sec.ai",
       "description": "Portfolio and professional website of Chris McMillon, AI Security Engineer at AWS",
       "author": {
+        "@type": "Person",
+        "name": "Chris McMillon"
+      }
+    }
+    </script>
+
+    <!-- ProfessionalService Schema for consulting visibility -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Chris McMillon - Security Automation Consulting",
+      "description": "Expert consulting for agentic AI systems, security automation, and multi-agent architectures. Specializing in compliance automation, threat analysis pipelines, and LLM integration for security workflows.",
+      "url": "https://cm-sec.ai",
+      "areaServed": {
+        "@type": "Place",
+        "name": "Worldwide"
+      },
+      "serviceType": [
+        "Security Consulting",
+        "AI Architecture",
+        "Security Automation Design",
+        "Multi-Agent System Development",
+        "Compliance Automation"
+      ],
+      "provider": {
+        "@type": "Person",
+        "name": "Chris McMillon",
+        "jobTitle": "AI Security Engineer"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Security Automation Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Agentic AI System Design",
+              "description": "Architecture and implementation of multi-agent systems for security automation"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Compliance Automation",
+              "description": "Automated compliance frameworks using AI and multi-agent architectures"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
+    <!-- WebPage Schema with Speakable for voice assistants -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Chris McMillon - AI Security Engineer Portfolio",
+      "description": "Portfolio and professional website of Chris McMillon, AI Security Engineer specializing in security automation and agentic AI systems",
+      "url": "https://cm-sec.ai",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["#hero", "#about"]
+      },
+      "mainEntity": {
         "@type": "Person",
         "name": "Chris McMillon"
       }

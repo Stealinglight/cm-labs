@@ -31,13 +31,28 @@ export default function App() {
       }
     };
 
+    // Call on mount to set initial section (handles hash navigation)
+    handleScroll();
+
+    // Listen to scroll events
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    // Listen to hash changes for direct navigation
+    window.addEventListener('hashchange', handleScroll);
+    
+    // Listen to popstate for browser back/forward
+    window.addEventListener('popstate', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('hashchange', handleScroll);
+      window.removeEventListener('popstate', handleScroll);
+    };
   }, []);
 
   return (
     <div className="bg-[#0a0a0a] text-white min-h-screen">
-      <SEOHead section={activeSection as 'hero' | 'about' | 'projects' | 'experience' | 'skills' | 'contact'} />
+      <SEOHead section={activeSection as 'hero' | 'about' | 'projects' | 'experience' | 'skills' | 'contact' | 'blog' | 'faq'} />
       <Navigation activeSection={activeSection} />
       <main>
         <HeroSection />

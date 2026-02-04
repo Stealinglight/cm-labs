@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface SEOHeadProps {
-  section?: 'hero' | 'about' | 'projects' | 'experience' | 'skills' | 'contact';
+  section?: 'hero' | 'about' | 'projects' | 'experience' | 'skills' | 'contact' | 'blog' | 'faq';
 }
 
 interface SectionMeta {
@@ -34,20 +34,36 @@ const sectionMeta: Record<string, SectionMeta> = {
     titleSuffix: ' | Contact',
     description: 'Contact Chris McMillon for security automation consulting, agentic AI system design, and multi-agent architecture expertise.',
   },
+  blog: {
+    titleSuffix: ' | Blog',
+    description: 'Blog posts and articles by Chris McMillon on security automation, agentic AI systems, and multi-agent architectures.',
+  },
+  faq: {
+    titleSuffix: ' | FAQ',
+    description: 'Frequently asked questions about security automation, agentic AI systems, and consulting services by Chris McMillon.',
+  },
 };
 
 const BASE_TITLE = 'Chris McMillon | AI Security Engineer & Security Consultant';
 const BASE_URL = 'https://cm-sec.ai';
 
 /**
- * SEOHead component for dynamic meta tag updates based on current section.
- * Uses native document API for React 19 compatibility.
+ * SEOHead component for meta tag management.
+ * Note: Dynamic meta tag updates based on scroll are primarily for user experience
+ * and won't affect SEO as search engine crawlers don't execute JavaScript or track scroll.
+ * For SEO purposes, the static meta tags in index.html are what matters.
+ * 
+ * This component could be enhanced with SSR/prerendering for better SEO support.
  */
 export function SEOHead({ section = 'hero' }: SEOHeadProps) {
   useEffect(() => {
-    const meta = sectionMeta[section] || sectionMeta.hero;
+    // Safely access sectionMeta with validated key
+    const validSection: keyof typeof sectionMeta = section in sectionMeta ? section : 'hero';
+    // Safe: validSection is validated above and explicitly typed as a key of sectionMeta
+    // eslint-disable-next-line security/detect-object-injection
+    const meta = sectionMeta[validSection];
     const newTitle = `${BASE_TITLE}${meta.titleSuffix}`;
-    const newUrl = section === 'hero' ? BASE_URL : `${BASE_URL}/#${section}`;
+    const newUrl = validSection === 'hero' ? BASE_URL : `${BASE_URL}/#${validSection}`;
 
     // Update document title
     document.title = newTitle;
@@ -105,16 +121,17 @@ export function SEOHead({ section = 'hero' }: SEOHeadProps) {
  * Returns the section ID that is currently most visible in viewport.
  */
 export function useCurrentSection(): string {
+  const [currentSection, setCurrentSection] = useState('hero');
+
   useEffect(() => {
-    const sections = ['hero', 'about', 'projects', 'experience', 'skills', 'contact'];
+    const sections = ['hero', 'about', 'projects', 'experience', 'skills', 'contact', 'blog', 'faq'];
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
             const sectionId = entry.target.id || 'hero';
-            // Dispatch custom event for section change
-            window.dispatchEvent(new CustomEvent('sectionchange', { detail: sectionId }));
+            setCurrentSection(sectionId);
           }
         });
       },
@@ -131,5 +148,5 @@ export function useCurrentSection(): string {
     return () => observer.disconnect();
   }, []);
 
-  return 'hero';
+  return currentSection;
 }

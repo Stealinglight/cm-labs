@@ -3,6 +3,7 @@
 
 User-agent: *
 Allow: /
+Crawl-delay: 1
 
 # AI Crawlers - explicitly welcome for AEO (Answer Engine Optimization)
 User-agent: GPTBot
@@ -40,6 +41,3 @@ Sitemap: https://cm-sec.ai/sitemap.xml
 
 # LLMs.txt for AI systems
 # See: https://cm-sec.ai/llms.txt
-
-# Crawl-delay (optional, helps prevent server overload)
-Crawl-delay: 1

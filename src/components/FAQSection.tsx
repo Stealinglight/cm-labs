@@ -29,13 +29,27 @@ const faqs: FAQItem[] = [
   },
 ];
 
+/**
+ * Generate a stable ID from question text for ARIA attributes
+ */
+function generateQuestionId(question: string): string {
+  return question.replace(/\s+/g, '-').toLowerCase().replace(/[^\w-]/g, '');
+}
+
 function FAQItemComponent({ item, isOpen, onToggle }: { item: FAQItem; isOpen: boolean; onToggle: () => void }) {
+  // Generate stable IDs from question text
+  const questionId = generateQuestionId(item.question);
+  const panelId = `faq-panel-${questionId}`;
+  const buttonId = `faq-button-${questionId}`;
+
   return (
     <div className="border border-white/10 bg-[#1a1a1a]/50">
       <button
+        id={buttonId}
         onClick={onToggle}
         className="w-full p-6 text-left flex items-start justify-between gap-4 hover:bg-white/5 transition-colors"
         aria-expanded={isOpen}
+        aria-controls={panelId}
       >
         <span className="text-gray-200">{item.question}</span>
         <ChevronDown
@@ -43,7 +57,12 @@ function FAQItemComponent({ item, isOpen, onToggle }: { item: FAQItem; isOpen: b
         />
       </button>
       {isOpen && (
-        <div className="px-6 pb-6 text-gray-400 leading-relaxed border-t border-white/5 pt-4">
+        <div
+          id={panelId}
+          role="region"
+          aria-labelledby={buttonId}
+          className="px-6 pb-6 text-gray-400 leading-relaxed border-t border-white/5 pt-4"
+        >
           {item.answer}
         </div>
       )}
@@ -143,7 +162,7 @@ export function FAQSection() {
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <FAQItemComponent
-                key={index}
+                key={faq.question}
                 item={faq}
                 isOpen={openIndex === index}
                 onToggle={() => handleToggle(index)}

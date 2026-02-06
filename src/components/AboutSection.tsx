@@ -105,7 +105,7 @@ export function AboutSection() {
                   <span className="text-[#00ff41] font-mono">•</span>
                   <div>
                     <p className="text-gray-300">BS Cybersecurity & Networking (Minor in Data Science)</p>
-                    <p className="text-gray-500">Univerity of Maryland GC</p>
+                    <p className="text-gray-500">University of Maryland GC</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-2">

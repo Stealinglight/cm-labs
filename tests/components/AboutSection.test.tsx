@@ -27,7 +27,7 @@ describe('AboutSection', () => {
   it('displays BS Cybersecurity education', () => {
     render(<AboutSection />);
     expect(screen.getByText(/BS Cybersecurity & Networking/i)).toBeInTheDocument();
-    expect(screen.getByText(/Univerity of Maryland GC/i)).toBeInTheDocument();
+    expect(screen.getByText(/University of Maryland GC/i)).toBeInTheDocument();
   });
 
   it('displays AA Cybersecurity education', () => {

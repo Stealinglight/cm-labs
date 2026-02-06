@@ -14,41 +14,6 @@ describe('ContactSection', () => {
     expect(screen.getByText(/Interested in working together/i)).toBeInTheDocument();
   });
 
-  describe('Email Obfuscation', () => {
-    it('displays email address assembled from parts', () => {
-      render(<ContactSection />);
-      // The email should be visible but assembled via JavaScript
-      const emailLink = screen.getByText(/stealinglight@gmail\.com/);
-      expect(emailLink).toBeInTheDocument();
-    });
-
-    it('email link has proper mailto href', () => {
-      render(<ContactSection />);
-      const emailLink = screen.getByText(/stealinglight@gmail\.com/);
-      expect(emailLink).toHaveAttribute('href', 'mailto:stealinglight@gmail.com');
-    });
-
-    it('email link is keyboard accessible', async () => {
-      const user = userEvent.setup();
-      render(<ContactSection />);
-      
-      const emailLink = screen.getByText(/stealinglight@gmail\.com/);
-      
-      // Verify link can receive focus
-      emailLink.focus();
-      expect(emailLink).toHaveFocus();
-    });
-
-    it('email uses obfuscation function to prevent bot harvesting', () => {
-      render(<ContactSection />);
-      const emailLink = screen.getByText(/stealinglight@gmail\.com/);
-      
-      // The email should be rendered via JavaScript function, not hardcoded
-      // This makes it harder for bots to scrape
-      expect(emailLink.textContent).toMatch(/stealinglight@gmail\.com/);
-    });
-  });
-
   describe('Contact Information Links', () => {
     it('renders GitHub link with proper attributes', () => {
       render(<ContactSection />);

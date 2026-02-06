@@ -13,7 +13,7 @@ else
 fi
 
 # Run eslint on staged TypeScript files
-STAGED_TS=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(ts|tsx)$')
+STAGED_TS=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(ts|tsx)$' || true)
 if [ -n "$STAGED_TS" ]; then
   echo "Running ESLint on staged files..."
   git diff --cached --name-only -z --diff-filter=ACM | grep -z -E '\.(ts|tsx)$' | xargs -0 npx eslint

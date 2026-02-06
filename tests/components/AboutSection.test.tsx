@@ -27,7 +27,7 @@ describe('AboutSection', () => {
   it('displays BS Cybersecurity education', () => {
     render(<AboutSection />);
     expect(screen.getByText(/BS Cybersecurity & Networking/i)).toBeInTheDocument();
-    expect(screen.getByText(/UMGC - Minor in Data Science/i)).toBeInTheDocument();
+    expect(screen.getByText(/University of Maryland GC/i)).toBeInTheDocument();
   });
 
   it('displays AA Cybersecurity education', () => {
@@ -39,13 +39,13 @@ describe('AboutSection', () => {
   it('displays SANS training', () => {
     render(<AboutSection />);
     expect(screen.getByText(/SANS Technology Institute/i)).toBeInTheDocument();
-    expect(screen.getByText(/12-month training program/i)).toBeInTheDocument();
+    expect(screen.getByText(/SEC598/i)).toBeInTheDocument();
   });
 
   it('renders all focus areas', () => {
     render(<AboutSection />);
     const focusAreas = [
-      'Agentic AI systems',
+      'Multi-Agent architectures',
       'Security automation',
       'LLM integration',
       'Cloud security response',
@@ -65,8 +65,8 @@ describe('AboutSection', () => {
 
   it('displays background information', () => {
     render(<AboutSection />);
-    expect(screen.getByText(/Film production \(DP\/Editor\)/i)).toBeInTheDocument();
-    expect(screen.getByText(/CrossFit L1 Trainer/i)).toBeInTheDocument();
+    expect(screen.getByText(/Film & Commercial production \(DP\/Producer\)/i)).toBeInTheDocument();
+    expect(screen.getByText(/CrossFit\/Weightlifting Coach/i)).toBeInTheDocument();
     expect(screen.getByText(/TCCC trained/i)).toBeInTheDocument();
   });
 

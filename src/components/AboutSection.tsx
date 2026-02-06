@@ -27,7 +27,7 @@ export function AboutSection() {
               </p>
               <p>
                 My background combines creative problem-solving from 8 years in film production (managing
-                30+ person crews under pressure across Asia) with hardcore technical security engineering -
+                50+ person crews under pressure across Asia) with hardcore technical security engineering -
                 giving me a unique perspective on coordinating complex distributed systems. See my{' '}
                 <a href="#projects" onClick={createScrollHandler('projects')} className="text-[#00d9ff] hover:text-[#00ff41] transition-colors">featured projects</a> for examples.
               </p>
@@ -53,7 +53,7 @@ export function AboutSection() {
             {/* Current Role */}
             <div className="border border-white/10 p-6 bg-[#1a1a1a]/50">
               <h3 className="text-sm uppercase tracking-widest text-[#00d9ff] mb-3">Current Role</h3>
-              <p className="mb-1">AI Security Engineer</p>
+              <p className="mb-1">Security AI Engineer</p>
               <p className="text-gray-400 mb-2">AWS Security - Operational Research & Development</p>
               <p className="text-sm text-gray-500 font-mono">May 2022 - Present (~4 years)</p>
             </div>
@@ -73,7 +73,7 @@ export function AboutSection() {
               <ul className="space-y-2 text-gray-400">
                 <li className="flex items-start gap-2">
                   <span className="text-[#00ff41] font-mono">→</span>
-                  <span>Agentic AI systems</span>
+                  <span>Multi-Agent architectures</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#00ff41] font-mono">→</span>
@@ -104,8 +104,8 @@ export function AboutSection() {
                 <li className="flex items-start gap-2">
                   <span className="text-[#00ff41] font-mono">•</span>
                   <div>
-                    <p className="text-gray-300">BS Cybersecurity & Networking</p>
-                    <p className="text-gray-500">UMGC - Minor in Data Science</p>
+                    <p className="text-gray-300">BS Cybersecurity & Networking (Minor in Data Science)</p>
+                    <p className="text-gray-500">University of Maryland GC</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-2">
@@ -131,11 +131,11 @@ export function AboutSection() {
               <ul className="space-y-2 text-sm text-gray-400">
                 <li className="flex items-start gap-2">
                   <span className="text-[#00ff41] font-mono">•</span>
-                  <span>Film production (DP/Editor)</span>
+                  <span>Film & Commercial production (DP/Producer)</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#00ff41] font-mono">•</span>
-                  <span>CrossFit L1 Trainer</span>
+                  <span>CrossFit/Weightlifting Coach</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#00ff41] font-mono">•</span>

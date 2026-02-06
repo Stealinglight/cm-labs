@@ -119,7 +119,7 @@ export function AboutSection() {
                   <span className="text-[#00ff41] font-mono">•</span>
                   <div>
                     <p className="text-gray-300">SANS Technology Institute</p>
-                    <p className="text-gray-500">12-month training program</p>
+                    <p className="text-gray-500">SEC598 | SEC588 | SEC542 | SEC573</p>
                   </div>
                 </li>
               </ul>

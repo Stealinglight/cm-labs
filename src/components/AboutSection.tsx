@@ -20,7 +20,7 @@ export function AboutSection() {
                 where I build agentic solutions for security automation and compliance.
               </p>
               <p>
-                With nearly 4 years at AWS, I've progressed from SOC operations through cloud security response
+                With over 4 years at AWS, I've progressed from SOC operations through cloud security response
                 to my current focus on AI-driven security systems. My work involves{' '}
                 <a href="#skills" onClick={createScrollHandler('skills')} className="text-[#00d9ff] hover:text-[#00ff41] transition-colors">multi-agent architectures</a>,{' '}
                 <a href="#skills" onClick={createScrollHandler('skills')} className="text-[#00d9ff] hover:text-[#00ff41] transition-colors">LLM integration</a> for validation processes, and automated compliance frameworks.
@@ -55,7 +55,7 @@ export function AboutSection() {
               <h3 className="text-sm uppercase tracking-widest text-[#00d9ff] mb-3">Current Role</h3>
               <p className="mb-1">AI Security Engineer</p>
               <p className="text-gray-400 mb-2">AWS Security - Operational Research & Development</p>
-              <p className="text-sm text-gray-500 font-mono">May 2022 - Present (~3-4 years)</p>
+              <p className="text-sm text-gray-500 font-mono">May 2022 - Present (~4 years)</p>
             </div>
 
             {/* Location */}
@@ -106,6 +106,13 @@ export function AboutSection() {
                   <div>
                     <p className="text-gray-300">BS Cybersecurity & Networking</p>
                     <p className="text-gray-500">UMGC - Minor in Data Science</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#00ff41] font-mono">•</span>
+                  <div>
+                    <p className="text-gray-300">AA Cybersecurity</p>
+                    <p className="text-gray-500">Northern Virginia Community College</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-2">

@@ -70,7 +70,7 @@ export function Navigation({ activeSection }: NavigationProps) {
               </button>
             ))}
             <a
-              href="/Chris_McMillon_Resume_AI_Security.pdf"
+              href="/Chris_McMillon_SecEng_Resume_2026.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all"
@@ -108,7 +108,7 @@ export function Navigation({ activeSection }: NavigationProps) {
                 </button>
               ))}
               <a
-                href="/Chris_McMillon_Resume_AI_Security.pdf"
+                href="/Chris_McMillon_SecEng_Resume_2026.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all w-full justify-center"

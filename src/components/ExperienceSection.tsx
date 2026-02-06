@@ -26,14 +26,15 @@ export function ExperienceSection() {
         {
           company: 'AWS Security',
           team: 'Operational Research & Development',
-          title: 'AI Security Engineer',
+          title: 'Security Engineer',
           period: 'Jun 2025 - Present',
           description:
-            'Building agentic solutions for AWS Security, focusing on multi-agent systems and automation for security operations.',
+            'Building security tooling, APIs, and multi-agent AI workflows for AWS Security operations.',
           highlights: [
-            'Member of AWS Security Operations OR&D team specializing in agentic solutions',
-            'Conducted Tier 2 security response escalations',
-            'Focused on data enrichment to improve security operations efficiency',
+            'Build security tooling and APIs for AWS Security Operations organizations',
+            'Design and deploy multi-agent AI workflows using Amazon Bedrock',
+            'Build MCP servers using FastMCP for AI agent integration',
+            'Conduct Tier 2 security response escalations',
           ],
         },
         {
@@ -42,11 +43,11 @@ export function ExperienceSection() {
           title: 'Security Engineer',
           period: 'Dec 2024 - Jun 2025',
           description:
-            'Drove continuous improvements to core operational and security platforms through LLM integration and advanced automation.',
+            'Drove continuous improvements to core security platforms through LLM integration and advanced automation.',
           highlights: [
-            'Expanded advanced search/analysis features for security workflows',
-            'Automated validation processes using LLMs',
-            'Enriched historical security data for improved incident response',
+            'Integrated LLMs into security validation processes',
+            'Expanded advanced search and analysis features for security platforms',
+            'Developed API-driven decision services and event-driven automation patterns',
           ],
         },
       ],
@@ -54,7 +55,7 @@ export function ExperienceSection() {
     {
       phase: 'Phase 2',
       title: 'Cloud Security Response',
-      period: '2023 - 2024',
+      period: '2022 - 2024',
       roles: [
         {
           company: 'AWS Security',
@@ -62,35 +63,37 @@ export function ExperienceSection() {
           title: 'Security Engineer',
           period: 'Apr 2024 - Dec 2024',
           description:
-            'Developed security automation frameworks and AI-driven solutions for incident response.',
+            'Built automation and analysis tooling for frontline incident responders at scale.',
           highlights: [
-            'Built scalable automation reducing operational overhead',
-            'Analyzed large datasets for anomaly detection',
-            'Improved incident response through AI-driven insights',
+            'Developed Splunk queries and Python-based analysis pipelines',
+            'Built broad-scope security scans to surface anomalies at scale',
+            'Designed automation workflows using Lambda, Step Functions, and DynamoDB',
           ],
         },
         {
           company: 'AWS Security',
           team: 'Cloud Responder',
-          title: 'Security Engineer',
+          title: 'Cloud Security Responder',
           period: 'Nov 2023 - Apr 2024',
           description:
-            'Incident response at cloud scale - keeping all the clouds afloat.',
+            'First-line incident responder for AWS Security at cloud scale.',
           highlights: [
-            'Handled security incidents across AWS infrastructure',
-            'Streamlined incident response processes',
+            'Processed bug bounty reports, red team findings, CVEs, and security embargoes',
+            'Drove cross-organizational coordination on high-severity incidents',
+            'Developed response playbooks for recurring incident patterns',
           ],
         },
         {
           company: 'AWS CloudOps',
-          team: 'Internal Security',
+          team: 'Security Operations',
           title: 'Security Engineer / Team Lead',
-          period: 'Feb 2023 - Nov 2023',
+          period: 'May 2022 - Nov 2023',
           description:
-            'Led internal security engineering for critical AWS platforms.',
+            'Led security operations team managing real-time incidents for AWS CloudOps.',
           highlights: [
-            'Team/Tech Lead for platform security',
-            'Maintained critical security infrastructure',
+            'Led security operations team for AWS CloudOps',
+            'Developed automation scripts for alert triage and response',
+            'Created incident response procedures and runbooks',
           ],
         },
       ],
@@ -98,21 +101,8 @@ export function ExperienceSection() {
     {
       phase: 'Phase 1',
       title: 'Security Foundations',
-      period: '2021 - 2023',
+      period: '2021 - 2022',
       roles: [
-        {
-          company: 'AWS SOC CloudOps',
-          team: null,
-          title: 'Security Engineer / Tech Lead',
-          period: 'May 2022 - Feb 2023',
-          description:
-            'Real-time security incident management and automation for AWS CloudOps.',
-          highlights: [
-            'Tech/Team Lead for SOC operations',
-            'Managed real-time security incidents',
-            'Developed automation scripts for alert triage',
-          ],
-        },
         {
           company: 'Olezka Global',
           team: null,
@@ -124,6 +114,19 @@ export function ExperienceSection() {
             'Monitored and responded to security events',
             'Conducted security and risk assessments',
             'Tools: CrowdStrike, Tenable, Fortinet, ServiceNow',
+          ],
+        },
+        {
+          company: 'Caesars Entertainment',
+          team: null,
+          title: 'IT Support Specialist II',
+          period: 'Jul 2021 - Apr 2022',
+          description:
+            'Technical support across casino and hospitality properties, building foundational infrastructure knowledge.',
+          highlights: [
+            'Supported POS systems, gaming technology, and networking infrastructure',
+            'Managed technology deployments for large-scale events',
+            'Gained hands-on experience with enterprise IT operations at scale',
           ],
         },
       ],
@@ -141,7 +144,7 @@ export function ExperienceSection() {
 
         <p className="text-gray-400 mb-12 max-w-3xl">
           <TrendingUp className="w-4 h-4 inline mr-2 text-[#00d9ff]" />
-          Career progression: SOC Analyst → Cloud Security Response → AI Security Engineering.{' '}
+          Career progression: IT Support → SOC Analyst → Cloud Security Response → AI Security Engineering.{' '}
           <a
             href="#projects"
             onClick={createScrollHandler('projects')}
@@ -215,23 +218,27 @@ export function ExperienceSection() {
           <h3 className="text-sm uppercase tracking-widest text-[#00d9ff] mb-6">
             Education & Certifications
           </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-gray-400">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 text-gray-400">
             <div>
               <p className="text-[#00ff41] font-mono text-sm mb-2">→ BS Cybersecurity</p>
               <p className="text-sm">UMGC - Networking & Data Science</p>
             </div>
             <div>
+              <p className="text-[#00ff41] font-mono text-sm mb-2">→ AA Cybersecurity</p>
+              <p className="text-sm">Northern Virginia Community College</p>
+            </div>
+            <div>
               <p className="text-[#00ff41] font-mono text-sm mb-2">→ SANS Training</p>
-              <p className="text-sm">12-month program</p>
+              <p className="text-sm">SEC598, SEC588, SEC542, SEC573</p>
             </div>
             <div>
               <p className="text-[#00ff41] font-mono text-sm mb-2">→ CrossFit L1</p>
               <p className="text-sm">Certified Trainer</p>
             </div>
-            <div>
+            {/* <div>
               <p className="text-[#00ff41] font-mono text-sm mb-2">→ TCCC Trained</p>
               <p className="text-sm">Tactical Combat Casualty Care</p>
-            </div>
+            </div> */}
           </div>
         </div>
 

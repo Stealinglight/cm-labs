@@ -16,7 +16,7 @@ describe('AboutSection', () => {
 
   it('displays correct career duration', () => {
     render(<AboutSection />);
-    expect(screen.getByText(/May 2022 - Present \(~3-4 years\)/i)).toBeInTheDocument();
+    expect(screen.getByText(/May 2022 - Present \(~4 years\)/i)).toBeInTheDocument();
   });
 
   it('renders education section with GraduationCap header', () => {
@@ -28,6 +28,12 @@ describe('AboutSection', () => {
     render(<AboutSection />);
     expect(screen.getByText(/BS Cybersecurity & Networking/i)).toBeInTheDocument();
     expect(screen.getByText(/UMGC - Minor in Data Science/i)).toBeInTheDocument();
+  });
+
+  it('displays AA Cybersecurity education', () => {
+    render(<AboutSection />);
+    expect(screen.getByText(/AA Cybersecurity/i)).toBeInTheDocument();
+    expect(screen.getByText(/Northern Virginia Community College/i)).toBeInTheDocument();
   });
 
   it('displays SANS training', () => {
@@ -74,6 +80,6 @@ describe('AboutSection', () => {
 
   it('displays professional summary with AWS experience', () => {
     render(<AboutSection />);
-    expect(screen.getByText(/With nearly 4 years at AWS/i)).toBeInTheDocument();
+    expect(screen.getByText(/With over 4 years at AWS/i)).toBeInTheDocument();
   });
 });

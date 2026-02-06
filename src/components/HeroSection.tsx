@@ -88,7 +88,7 @@ export function HeroSection() {
             View Projects
           </button>
           <a
-            href="/Chris_McMillon_Resume_AI_Security.pdf"
+            href="/Chris_McMillon_SecEng_Resume_2026.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-3 border border-[#00d9ff] text-[#00d9ff] hover:bg-[#00d9ff] hover:text-black transition-all uppercase tracking-wider"

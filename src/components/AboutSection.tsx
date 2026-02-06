@@ -131,7 +131,7 @@ export function AboutSection() {
               <ul className="space-y-2 text-sm text-gray-400">
                 <li className="flex items-start gap-2">
                   <span className="text-[#00ff41] font-mono">•</span>
-                  <span>Film & Commerical production (DP/Producer)</span>
+                  <span>Film & Commercial production (DP/Producer)</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#00ff41] font-mono">•</span>

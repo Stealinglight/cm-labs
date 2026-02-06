@@ -65,7 +65,7 @@ describe('AboutSection', () => {
 
   it('displays background information', () => {
     render(<AboutSection />);
-    expect(screen.getByText(/Film & Commerical production \(DP\/Producer\)/i)).toBeInTheDocument();
+    expect(screen.getByText(/Film & Commercial production \(DP\/Producer\)/i)).toBeInTheDocument();
     expect(screen.getByText(/CrossFit\/Weightlifting Coach/i)).toBeInTheDocument();
     expect(screen.getByText(/TCCC trained/i)).toBeInTheDocument();
   });

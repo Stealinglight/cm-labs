@@ -229,7 +229,7 @@ export function ExperienceSection() {
             </div>
             <div>
               <p className="text-[#00ff41] font-mono text-sm mb-2">→ SANS Training</p>
-              <p className="text-sm">SEC598, SEC588, SEC542, SEC573</p>
+              <p className="text-sm">SEC598 | SEC588 | SEC542 | SEC573</p>
             </div>
             <div>
               <p className="text-[#00ff41] font-mono text-sm mb-2">→ CrossFit L1</p>

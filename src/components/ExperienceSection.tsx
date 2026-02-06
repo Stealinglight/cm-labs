@@ -220,8 +220,8 @@ export function ExperienceSection() {
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 text-gray-400">
             <div>
-              <p className="text-[#00ff41] font-mono text-sm mb-2">→ BS Cybersecurity</p>
-              <p className="text-sm">UMGC - Networking & Data Science</p>
+              <p className="text-[#00ff41] font-mono text-sm mb-2">→ BS Cybersecurity & Networking (Minor in Data Science)</p>
+              <p className="text-sm">University of Maryland GC</p>
             </div>
             <div>
               <p className="text-[#00ff41] font-mono text-sm mb-2">→ AA Cybersecurity</p>
@@ -232,20 +232,16 @@ export function ExperienceSection() {
               <p className="text-sm">SEC598 | SEC588 | SEC542 | SEC573</p>
             </div>
             <div>
-              <p className="text-[#00ff41] font-mono text-sm mb-2">→ CrossFit L1</p>
+              <p className="text-[#00ff41] font-mono text-sm mb-2">→ CrossFit & Weightlifting</p>
               <p className="text-sm">Certified Trainer</p>
             </div>
-            {/* <div>
-              <p className="text-[#00ff41] font-mono text-sm mb-2">→ TCCC Trained</p>
-              <p className="text-sm">Tactical Combat Casualty Care</p>
-            </div> */}
           </div>
         </div>
 
         {/* Creative background note */}
         <div className="mt-6 p-4 border-l-2 border-[#00d9ff]/30 bg-[#1a1a1a]/20">
           <p className="text-gray-500 text-sm">
-            <span className="text-[#00d9ff]">Prior career:</span> 8 years in film production as Cinematographer/DP across Asia
+            <span className="text-[#00d9ff]">Prior career:</span> 8 years in film & commercial production as Cinematographer/Producer across Asia
             (Intel, Toyota, Puma, Volkswagen). Managing 30+ person crews under pressure translates directly to
             coordinating complex distributed systems.
           </p>

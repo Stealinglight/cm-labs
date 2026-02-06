@@ -3,8 +3,8 @@ import { createScrollHandler } from '../utils/navigation';
 
 export function BlogSection() {
   const plannedTopics = [
-    'Prompt Engineering for Security Operations',
-    'Multi-Agent Architecture Patterns in Production',
+    'Building Bots to work alongside human analysts',
+    'Multi-Agent Architecture for Security Operations',
     'Building Autonomous Compliance Systems',
     'LLM Orchestration at Scale',
   ];

@@ -132,7 +132,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore: update sitemap [skip ci]"
+          HUSKY=0 git commit -m "chore: update sitemap [skip ci]"
 
       - name: Push sitemap changes
         if: steps.check_changes.outputs.changed == 'true'

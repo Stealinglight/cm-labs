@@ -102,8 +102,8 @@ describe('ExperienceSection', () => {
 
     it('displays BS Cybersecurity', () => {
       render(<ExperienceSection />);
-      expect(screen.getByText(/BS Cybersecurity/i)).toBeInTheDocument();
-      expect(screen.getByText(/UMGC - Networking & Data Science/i)).toBeInTheDocument();
+      expect(screen.getByText(/BS Cybersecurity & Networking/i)).toBeInTheDocument();
+      expect(screen.getByText(/University of Maryland GC/i)).toBeInTheDocument();
     });
 
     it('displays AA Cybersecurity', () => {
@@ -115,25 +115,19 @@ describe('ExperienceSection', () => {
     it('displays SANS training', () => {
       render(<ExperienceSection />);
       expect(screen.getByText(/SANS Training/i)).toBeInTheDocument();
-      expect(screen.getByText(/12-month program/i)).toBeInTheDocument();
+      expect(screen.getByText(/SEC598/i)).toBeInTheDocument();
     });
 
-    it('displays CrossFit L1 certification', () => {
+    it('displays CrossFit & Weightlifting certification', () => {
       render(<ExperienceSection />);
-      expect(screen.getByText(/CrossFit L1/i)).toBeInTheDocument();
+      expect(screen.getByText(/CrossFit & Weightlifting/i)).toBeInTheDocument();
       expect(screen.getByText(/Certified Trainer/i)).toBeInTheDocument();
-    });
-
-    it('displays TCCC training', () => {
-      render(<ExperienceSection />);
-      expect(screen.getByText(/TCCC Trained/i)).toBeInTheDocument();
-      expect(screen.getByText(/Tactical Combat Casualty Care/i)).toBeInTheDocument();
     });
   });
 
   it('displays prior career background note', () => {
     render(<ExperienceSection />);
-    expect(screen.getByText(/8 years in film production as Cinematographer\/DP across Asia/i)).toBeInTheDocument();
+    expect(screen.getByText(/8 years in film & commercial production as Cinematographer\/Producer across Asia/i)).toBeInTheDocument();
     expect(screen.getByText(/Intel, Toyota, Puma, Volkswagen/i)).toBeInTheDocument();
   });
 

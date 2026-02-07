@@ -44,7 +44,7 @@
   <text x="600" y="220" font-family="system-ui, -apple-system, sans-serif" font-size="72" fill="#ffffff" text-anchor="middle" font-weight="bold">Chris McMillon</text>
 
   <!-- Title with glow -->
-  <text x="600" y="300" font-family="system-ui, -apple-system, sans-serif" font-size="36" fill="#00d9ff" text-anchor="middle" filter="url(#glow)">AI Security Engineer</text>
+  <text x="600" y="300" font-family="system-ui, -apple-system, sans-serif" font-size="36" fill="#00d9ff" text-anchor="middle" filter="url(#glow)">Security AI Engineer</text>
 
   <!-- Subtitle -->
   <text x="600" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#888888" text-anchor="middle">Security Automation &amp; Agentic AI Systems</text>
